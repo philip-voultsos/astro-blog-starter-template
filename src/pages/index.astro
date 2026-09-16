@@ -8,108 +8,125 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
   <head>
     <BaseHead 
-      title="Philip Voultsos | Academic Portfolio & Research" 
-      description="Academic profile, debate leadership, and writings on political economy and institutional governance." 
+      title="Philip Voultsos — Academic Portfolio & Research" 
+      description="Personal portfolio, academic profile, and writings on political economy, institutional governance, and diplomacy." 
     />
   </head>
   <body>
     <Header />
     <main>
-      <!-- Hero Section with Headshot & Intro -->
-      <section class="hero-wrapper">
-        <div class="hero-content">
-          <div class="status-pill">
-            <span class="status-dot"></span>
-            <span>Sixth-Form Scholar &bull; Prospective PPE</span>
+      <!-- Hero Section with Headshot and Live Indicator -->
+      <section class="hero-container">
+        <div class="hero-left">
+          <div class="status-indicator">
+            <span class="pulsing-dot"></span>
+            <span class="status-text">Sixth-Form Scholar &bull; Prospective PPE</span>
           </div>
-          <h1>Philip Voultsos</h1>
-          <p class="tagline">
-            Student, researcher, and debater focused on macroeconomic policy, political philosophy, and diplomatic history.
+
+          <h1 class="hero-title">Philip Voultsos</h1>
+          
+          <p class="hero-tagline">
+            Student, researcher, and debater focused on macroeconomic policy, institutional political theory, and historical statecraft.
           </p>
-          <div class="cta-row">
-            <a href="/cv" class="btn">View Academic CV</a>
-            <a href="/blog" class="btn btn-secondary">Read Essays & Papers</a>
+
+          <div class="hero-actions">
+            <a href="/cv" class="btn">
+              <span>View Academic CV</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/blog" class="btn btn-secondary">Selected Writings</a>
           </div>
         </div>
 
-        <div class="hero-image-box">
-          <img 
-            src="/profile.png" 
-            alt="Philip Voultsos" 
-            class="headshot"
-            onerror="this.style.display='none'" 
-          />
+        <div class="hero-right">
+          <div class="portrait-frame">
+            <img 
+              src="/profile.png" 
+              alt="Philip Voultsos" 
+              class="portrait-img"
+              onerror="this.parentElement.style.display='none'"
+            />
+          </div>
         </div>
       </section>
 
-      <!-- Stat / Highlight Strip -->
-      <section class="stats-strip">
-        <div class="stat-item">
-          <span class="stat-number">BCIMUN</span>
-          <span class="stat-label">Secretariat Leadership</span>
+      <!-- Key Academic & Leadership Highlight Cards -->
+      <section class="highlight-band">
+        <div class="band-card">
+          <span class="band-num">BCIMUN</span>
+          <span class="band-label">Secretariat & Governance</span>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">PPE</span>
-          <span class="stat-label">Core Academic Focus</span>
+        <div class="band-card">
+          <span class="band-num">PPE</span>
+          <span class="band-label">Academic Specialization</span>
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat-item">
-          <span class="stat-number">Essays</span>
-          <span class="stat-label">Policy & Theory Archive</span>
+        <div class="band-card">
+          <span class="band-num">ESSAYS</span>
+          <span class="band-label">Policy & Theory Archive</span>
         </div>
       </section>
 
-      <!-- Key Academic Focus Areas -->
-      <section class="overview-section">
+      <!-- Areas of Inquiry Grid -->
+      <section class="section-block">
         <h2>Areas of Inquiry</h2>
-        <div class="grid-2">
-          <div class="card focus-card">
-            <div class="card-icon">🏛️</div>
-            <h3>Political Economy & Institutional Design</h3>
+        <div class="inquiry-grid">
+          <div class="card inquiry-card">
+            <div class="inquiry-badge">Theory & Policy</div>
+            <h3>Political Economy & State Institutions</h3>
             <p>
-              Analyzing macroeconomic frameworks, international trade policies, and the ethical foundations of constitutional governance.
+              Investigating the interplay between constitutional frameworks, market dynamics, and fiscal policies that underpin democratic resilience.
             </p>
+            <div class="topic-tags">
+              <span class="badge">Macroeconomics</span>
+              <span class="badge">Institutional Design</span>
+              <span class="badge">Trade Dynamics</span>
+            </div>
           </div>
-          <div class="card focus-card">
-            <div class="card-icon">🌐</div>
-            <h3>Diplomacy & Debate Leadership</h3>
+
+          <div class="card inquiry-card">
+            <div class="inquiry-badge">Diplomacy & Practice</div>
+            <h3>Diplomatic Simulation & Debate</h3>
             <p>
-              Directing parliamentary procedure, coordinating secretariat operations, and chairing high-level committee simulations.
+              Directing parliamentary procedure, shaping conference crises, and facilitating high-level debate through substantive resolution drafting.
             </p>
+            <div class="topic-tags">
+              <span class="badge">Secretariat Administration</span>
+              <span class="badge">Crisis Management</span>
+              <span class="badge">Rules of Procedure</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Featured Writing Preview -->
-      <section class="recent-section">
-        <div class="section-header">
+      <!-- Featured Writing Showcase -->
+      <section class="section-block">
+        <div class="block-header">
           <h2>Selected Writings</h2>
-          <a href="/blog" class="arrow-link">View All &rarr;</a>
+          <a href="/blog" class="inline-link">Browse Full Archive &rarr;</a>
         </div>
 
-        <div class="card post-preview-card">
-          <div class="post-meta">
-            <span class="post-tag">Political Theory & Macro</span>
-            <span class="post-date">Archive</span>
+        <div class="card writing-card">
+          <div class="writing-top">
+            <span class="badge">Research & Essay Archive</span>
+            <span class="writing-date">Recent Submissions</span>
           </div>
-          <h3><a href="/blog" class="title-link">Supercurricular Essays & Research Papers</a></h3>
+          <h3 class="writing-title">
+            <a href="/blog">Independent Research Papers & Policy Commentary</a>
+          </h3>
           <p>
-            An ongoing collection of analytical essays, competition submissions, and policy papers examining institutional design and historical statecraft.
+            Supercurricular essays, competition submissions, and long-form analysis covering international order, game theory, and political economy.
           </p>
-          <a href="/blog" class="read-more">Read writings &rarr;</a>
+          <a href="/blog" class="writing-cta">Read articles &rarr;</a>
         </div>
       </section>
 
-      <!-- Quick Contact Card -->
-      <section class="cta-section">
-        <div class="card cta-box">
-          <div>
-            <h3>Academic Inquiries & Dialogue</h3>
-            <p class="cta-subtext">Open to research discussions, debate engagements, and conference coordination.</p>
-          </div>
-          <a href="mailto:philip@voultsos.com" class="btn">Get in Touch</a>
+      <!-- Academic Inquiries Banner -->
+      <section class="inquiry-banner">
+        <div class="banner-content">
+          <h3>Academic Inquiries & Dialogue</h3>
+          <p>Always open to debate engagements, research discussions, and conference coordination.</p>
         </div>
+        <a href="mailto:philip@voultsos.com" class="btn">Get in Touch</a>
       </section>
     </main>
     <Footer />
@@ -117,215 +134,250 @@ import Footer from '../components/Footer.astro';
 </html>
 
 <style>
-  /* Hero section with 2 columns */
-  .hero-wrapper {
+  /* Hero Container */
+  .hero-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 3rem;
-    padding: 2.5rem 0 3.5rem;
-    border-bottom: 1px solid var(--card-border);
-    margin-bottom: 2.5rem;
+    gap: 3.5rem;
+    padding: 2rem 0 3.5rem;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 3.5rem;
   }
-  .hero-content {
+  .hero-left {
     flex: 1;
   }
-  .status-pill {
+  .hero-title {
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+  .hero-tagline {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 620px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  /* Status Pill with Pulsing Dot */
+  .status-indicator {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background-color: var(--subtle-bg);
-    border: 1px solid var(--card-border);
+    gap: 0.6rem;
+    background-color: var(--surface);
+    border: 1px solid var(--border-subtle);
     padding: 0.35rem 0.85rem;
     border-radius: 9999px;
-    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .status-text {
+    font-size: 0.825rem;
     font-weight: 600;
     color: var(--primary);
-    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
-  .status-dot {
+  .pulsing-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: #10b981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
   }
-  .tagline {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 2rem;
-  }
-  .cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
+  @keyframes pulse {
+    to {
+      box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
   }
 
-  /* Headshot Styling */
-  .hero-image-box {
+  /* Headshot with Multi-Layered Border */
+  .hero-right {
     flex-shrink: 0;
   }
-  .headshot {
-    width: 190px;
-    height: 190px;
+  .portrait-frame {
+    position: relative;
+    padding: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 28px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .portrait-frame:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+  .portrait-img {
+    width: 195px;
+    height: 195px;
     object-fit: cover;
     border-radius: 20px;
-    border: 3px solid var(--card-border);
-    box-shadow: 0 12px 28px rgba(0, 73, 83, 0.12);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-  .headshot:hover {
-    transform: scale(1.02);
-    box-shadow: 0 16px 36px rgba(0, 73, 83, 0.18);
-  }
-
-  /* Stat / Highlight Strip */
-  .stats-strip {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: var(--subtle-bg);
-    border: 1px solid var(--card-border);
-    border-radius: 12px;
-    padding: 1.5rem 1rem;
-    margin-bottom: 3.5rem;
-  }
-  .stat-item {
-    text-align: center;
-  }
-  .stat-number {
     display: block;
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: var(--primary);
-    letter-spacing: -0.01em;
-  }
-  .stat-label {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-  .stat-divider {
-    width: 1px;
-    height: 36px;
-    background-color: var(--card-border);
   }
 
-  /* Focus Cards */
-  .grid-2 {
+  /* Highlight Metrics Band */
+  .highlight-band {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
   }
-  .focus-card {
-    position: relative;
-    padding: 1.75rem;
+  .band-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s ease, transform 0.2s ease;
   }
-  .card-icon {
-    font-size: 1.5rem;
+  .band-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-2px);
+  }
+  .band-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.25rem;
+  }
+  .band-label {
+    font-size: 0.825rem;
+    font-weight: 500;
+    color: var(--text-subtle);
+  }
+
+  /* Inquiry Block */
+  .section-block {
+    margin-bottom: 4rem;
+  }
+  .inquiry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .inquiry-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .inquiry-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--secondary);
     margin-bottom: 0.75rem;
   }
+  .topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
 
-  /* Recent Writings */
-  .section-header {
+  /* Writing Block */
+  .block-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 1rem;
   }
-  .post-preview-card {
-    padding: 1.75rem;
-    margin-bottom: 3rem;
-  }
-  .post-meta {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.85rem;
-    margin-bottom: 0.5rem;
-  }
-  .post-tag {
-    color: var(--secondary);
-    font-weight: 600;
-  }
-  .post-date {
-    color: var(--text-muted);
-  }
-  .title-link {
-    text-decoration: none;
-    color: var(--primary);
-  }
-  .title-link:hover {
-    color: var(--secondary);
-  }
-  .read-more {
-    display: inline-block;
-    margin-top: 0.5rem;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--primary);
-    text-decoration: none;
-  }
-  .read-more:hover {
-    text-decoration: underline;
-  }
-  .arrow-link {
+  .inline-link {
     font-weight: 600;
     font-size: 0.95rem;
     color: var(--primary);
     text-decoration: none;
   }
-  .arrow-link:hover {
+  .inline-link:hover {
     color: var(--secondary);
   }
-
-  /* CTA Callout */
-  .cta-box {
+  .writing-card {
+    padding: 2rem;
+  }
+  .writing-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    background-color: var(--subtle-bg);
-    border-color: var(--card-border);
-    padding: 2rem;
+    margin-bottom: 1rem;
   }
-  .cta-subtext {
-    margin: 0.25rem 0 0;
-    color: var(--text-muted);
+  .writing-date {
+    font-size: 0.85rem;
+    color: var(--text-subtle);
+  }
+  .writing-title a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: color 0.2s ease;
+  }
+  .writing-title a:hover {
+    color: var(--secondary);
+  }
+  .writing-cta {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-weight: 600;
     font-size: 0.95rem;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .writing-cta:hover {
+    text-decoration: underline;
   }
 
-  /* Responsive breakdown for phones */
-  @media (max-width: 680px) {
-    .hero-wrapper {
+  /* Inquiry Callout Banner */
+  .inquiry-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-muted) 100%);
+    border: 1px solid var(--border-subtle);
+    border-radius: 18px;
+    padding: 2.25rem;
+    box-shadow: var(--shadow-sm);
+  }
+  .banner-content h3 {
+    color: var(--primary);
+    margin-bottom: 0.35rem;
+  }
+  .banner-content p {
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Mobile Layout */
+  @media (max-width: 768px) {
+    .hero-container {
       flex-direction: column-reverse;
       text-align: center;
-      gap: 1.75rem;
+      gap: 2rem;
       padding: 1.5rem 0 2.5rem;
     }
-    .status-pill {
-      margin: 0 auto 1rem;
+    .hero-tagline {
+      margin-left: auto;
+      margin-right: auto;
     }
-    .cta-row {
+    .hero-actions {
       justify-content: center;
     }
-    .headshot {
-      width: 150px;
-      height: 150px;
+    .highlight-band {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
     }
-    .stats-strip {
+    .inquiry-banner {
       flex-direction: column;
-      gap: 1.25rem;
-    }
-    .stat-divider {
-      width: 60%;
-      height: 1px;
-    }
-    .cta-box {
       text-align: center;
-      justify-content: center;
+      padding: 1.75rem;
     }
   }
 </style>
