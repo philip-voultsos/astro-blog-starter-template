@@ -9,13 +9,13 @@ import Footer from '../components/Footer.astro';
   <head>
     <BaseHead 
       title="Philip Voultsos" 
-      description="Personal portfolio, academic interests, and writing." 
+      description="Personal portfolio, academic profile, and writings." 
     />
   </head>
   <body>
     <Header />
     <main>
-      <!-- Hero: Scan-Friendly Z-Pattern -->
+      <!-- Hero Section: Fast scanning, clear focal points -->
       <section class="hero-module">
         <div class="hero-left">
           <div class="status-indicator">
@@ -26,15 +26,15 @@ import Footer from '../components/Footer.astro';
           <h1 class="hero-title">Philip Voultsos</h1>
           
           <p class="hero-body">
-            I’m a student focused on economics, politics, and history, aiming toward PPE at university. Outside coursework, most of my focus goes into Model UN governance, parliamentary debate, and essay writing.
+            I’m a student focused on economics, politics, and history, preparing for PPE at university. Outside the classroom, my time is centered on Model UN governance, competitive debate, and independent writing.
           </p>
 
           <div class="btn-group">
-            <a href="/cv" class="btn-primary">
-              <span>Academic CV & Roles</span>
+            <a href="/about" class="btn-primary">
+              <span>About Me</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="/blog" class="btn-secondary">Read Essays & Papers</a>
+            <a href="/cv" class="btn-secondary">View CV</a>
           </div>
         </div>
 
@@ -50,88 +50,62 @@ import Footer from '../components/Footer.astro';
         </div>
       </section>
 
-      <!-- Key Roles / Pillars Strip -->
-      <section class="metrics-grid">
-        <div class="glass-panel metric-box">
-          <span class="metric-tag">Leadership</span>
-          <h3 class="metric-title">BCIMUN 2027</h3>
-          <p class="metric-desc">Secretary-General & Student Head of the Organising Committee.</p>
+      <!-- Navigation Directory: Outlining the Rest of the Website -->
+      <section class="directory-section">
+        <div class="section-title-wrap">
+          <h2>Site Directory</h2>
+          <span class="section-hint">Explore sections</span>
         </div>
 
-        <div class="glass-panel metric-box">
-          <span class="metric-tag">Academics</span>
-          <h3 class="metric-title">PPE Preparation</h3>
-          <p class="metric-desc">Macroeconomics, political institutions, and historical analysis.</p>
-        </div>
-
-        <div class="glass-panel metric-box">
-          <span class="metric-tag">Publications</span>
-          <h3 class="metric-title">Essays & Briefs</h3>
-          <p class="metric-desc">Supercurricular competition papers and independent policy research.</p>
-        </div>
-      </section>
-
-      <!-- Focused Content Split -->
-      <section class="content-section">
-        <h2>Focus & Engagement</h2>
-        <div class="split-cards">
-          <div class="glass-panel content-card">
-            <span class="badge">Academic Inquiry</span>
-            <h3>Economics & Political Theory</h3>
-            <p>
-              I read and write on macroeconomic policy, institutional governance, and how states manage market friction during political change.
-            </p>
-            <div class="tag-row">
-              <span class="mini-tag">Fiscal Policy</span>
-              <span class="mini-tag">Public Governance</span>
-              <span class="mini-tag">Political Philosophy</span>
+        <div class="directory-grid">
+          <!-- About Card -->
+          <a href="/about" class="glass-panel directory-card">
+            <div class="card-header">
+              <span class="card-step">01</span>
+              <span class="badge">Background</span>
             </div>
-          </div>
-
-          <div class="glass-panel content-card">
-            <span class="badge">Conference Administration</span>
-            <h3>Model UN & Debate</h3>
+            <h3>About</h3>
             <p>
-              Years of experience spanning delegate positions, committee chairs, crisis teams, and full conference logistics and administration.
+              Background, academic direction, and personal statement outlining my focus in political economy and philosophy.
             </p>
-            <div class="tag-row">
-              <span class="mini-tag">Rules of Procedure</span>
-              <span class="mini-tag">Resolution Drafting</span>
-              <span class="mini-tag">Committee Direction</span>
+            <div class="card-action">
+              <span>Read statement</span>
+              <span class="arrow">&rarr;</span>
             </div>
-          </div>
-        </div>
-      </section>
+          </a>
 
-      <!-- Featured Writing Showcase -->
-      <section class="content-section">
-        <div class="section-top">
-          <h2>Selected Writing</h2>
-          <a href="/blog" class="all-link">Browse archive &rarr;</a>
-        </div>
+          <!-- CV Card -->
+          <a href="/cv" class="glass-panel directory-card">
+            <div class="card-header">
+              <span class="card-step">02</span>
+              <span class="badge">Experience</span>
+            </div>
+            <h3>Curriculum Vitae</h3>
+            <p>
+              Academic coursework, examination marks, leadership appointments, and conference secretariat records.
+            </p>
+            <div class="card-action">
+              <span>View credentials</span>
+              <span class="arrow">&rarr;</span>
+            </div>
+          </a>
 
-        <div class="glass-panel writing-showcase">
-          <div class="writing-meta">
-            <span class="badge">Archive</span>
-            <span class="writing-date">Policy & Theory</span>
-          </div>
-          <h3><a href="/blog" class="writing-link">Essays, Competition Entries & Policy Commentary</a></h3>
-          <p>
-            A curated archive of research papers, essay competition submissions, and long-form analysis covering international relations and economic policy.
-          </p>
-          <div class="writing-footer">
-            <a href="/blog" class="btn-secondary" style="height: 40px; padding: 0 1.25rem;">Open Writing Archive</a>
-          </div>
+          <!-- Writing Card -->
+          <a href="/blog" class="glass-panel directory-card">
+            <div class="card-header">
+              <span class="card-step">03</span>
+              <span class="badge">Archive</span>
+            </div>
+            <h3>Writing & Research</h3>
+            <p>
+              Independent essays, supercurricular competition submissions, and commentary on economic theory and international policy.
+            </p>
+            <div class="card-action">
+              <span>Browse papers</span>
+              <span class="arrow">&rarr;</span>
+            </div>
+          </a>
         </div>
-      </section>
-
-      <!-- Clean Contact Banner -->
-      <section class="contact-banner glass-panel">
-        <div>
-          <h3>Inquiries & Collaboration</h3>
-          <p>Get in touch for debate engagements, conference coordination, or academic discussion.</p>
-        </div>
-        <a href="mailto:philip@voultsos.com" class="btn-primary">philip@voultsos.com</a>
       </section>
     </main>
     <Footer />
@@ -146,7 +120,8 @@ import Footer from '../components/Footer.astro';
     justify-content: space-between;
     gap: 3.5rem;
     padding: 2.5rem 0 3.5rem;
-    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 3.5rem;
   }
   .hero-left {
     flex: 1;
@@ -177,10 +152,11 @@ import Footer from '../components/Footer.astro';
   .hero-body {
     font-size: 1.15rem;
     margin-bottom: 2rem;
-    max-width: 600px;
+    max-width: 580px;
+    color: var(--text-muted);
   }
 
-  /* Portrait */
+  /* Portrait Image Frame */
   .hero-right {
     flex-shrink: 0;
   }
@@ -192,138 +168,100 @@ import Footer from '../components/Footer.astro';
     padding: 8px;
     border-radius: 28px;
     box-shadow: var(--shadow-md);
+    transition: transform 0.25s ease;
+  }
+  .portrait-container:hover {
+    transform: translateY(-2px);
   }
   .portrait-img {
-    width: 200px;
-    height: 200px;
+    width: 190px;
+    height: 190px;
     object-fit: cover;
     border-radius: 20px;
     display: block;
   }
 
-  /* Metrics 3-Card Band */
-  .metrics-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.25rem;
-    margin-bottom: 4rem;
+  /* Directory Section */
+  .directory-section {
+    margin-bottom: 2rem;
   }
-  .metric-box {
-    padding: 1.5rem;
-  }
-  .metric-tag {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--secondary);
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .metric-title {
-    font-size: 1.25rem;
-    margin-bottom: 0.35rem;
-  }
-  .metric-desc {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  /* Section Spacing & Hierarchy */
-  .content-section {
-    margin-bottom: 4rem;
-  }
-  .section-top {
+  .section-title-wrap {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 1.5rem;
   }
-  .all-link {
-    color: var(--primary);
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-  }
-  .all-link:hover {
+  .section-hint {
+    font-size: 0.9rem;
+    font-weight: 500;
     color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
-  /* Split Cards */
-  .split-cards {
+  /* Directory Grid Cards */
+  .directory-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
   }
-  .content-card {
+  .directory-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-  }
-  .content-card h3 {
-    margin-top: 0.85rem;
-  }
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1.5rem;
-  }
-  .mini-tag {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    background: rgba(0, 73, 83, 0.04);
-    padding: 0.25rem 0.65rem;
-    border-radius: 6px;
-    border: 1px solid var(--glass-border);
-  }
-
-  /* Writing Showcase */
-  .writing-showcase {
-    padding: 2.25rem;
-  }
-  .writing-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  .writing-date {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--secondary);
-  }
-  .writing-link {
     text-decoration: none;
-    color: var(--primary);
+    padding: 2rem 1.75rem;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .writing-link:hover {
-    color: var(--secondary);
+  .directory-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--glass-border-focus);
+    box-shadow: var(--shadow-lg);
   }
-  .writing-footer {
-    margin-top: 1.5rem;
-  }
-
-  /* Contact Glass Banner */
-  .contact-banner {
+  .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    background: linear-gradient(135deg, var(--glass-surface) 0%, rgba(242, 247, 247, 0.8) 100%);
-    margin-top: 2rem;
+    margin-bottom: 1.25rem;
   }
-  .contact-banner h3 {
-    margin-bottom: 0.25rem;
+  .card-step {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--secondary);
+    letter-spacing: 0.05em;
   }
-  .contact-banner p {
-    margin: 0;
+  .directory-card h3 {
+    color: var(--primary);
+    font-size: 1.35rem;
+    margin-bottom: 0.6rem;
+    transition: color 0.15s ease;
+  }
+  .directory-card:hover h3 {
+    color: var(--secondary);
+  }
+  .directory-card p {
+    font-size: 0.975rem;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+    color: var(--text-muted);
+  }
+  .card-action {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-top: auto;
+  }
+  .arrow {
+    transition: transform 0.2s ease;
+  }
+  .directory-card:hover .arrow {
+    transform: translateX(4px);
   }
 
-  /* Responsive Breakdown */
+  /* Responsive Mobile Layout */
   @media (max-width: 768px) {
     .hero-module {
       flex-direction: column-reverse;
@@ -335,17 +273,16 @@ import Footer from '../components/Footer.astro';
       margin-left: auto;
       margin-right: auto;
     }
+    .hero-left .btn-group {
+      justify-content: center;
+    }
     .portrait-img {
       width: 160px;
       height: 160px;
     }
-    .contact-banner {
-      flex-direction: column;
-      text-align: center;
-      padding: 2rem 1.5rem;
-    }
-    .contact-banner .btn-primary {
-      width: 100%;
+    .directory-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
     }
   }
 </style>
