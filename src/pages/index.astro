@@ -15,100 +15,127 @@ import Footer from '../components/Footer.astro';
   <body>
     <Header />
     <main>
-      <!-- Hero Section: Fast scanning, clear focal points -->
+      <!-- Hero Section with Spring Animations -->
       <section class="hero-module">
         <div class="hero-left">
-          <div class="status-indicator">
+          <div class="status-indicator fade-in delay-1">
+            <span class="status-pulse-ring"></span>
             <span class="status-dot"></span>
             <span>Sixth-Form Scholar &bull; Athens</span>
           </div>
 
-          <h1 class="hero-title">Philip Voultsos</h1>
+          <h1 class="hero-title fade-in delay-2">Philip Voultsos</h1>
           
-          <p class="hero-body">
-            I’m a student focused on economics, politics, and history, preparing for PPE at university. Outside the classroom, my time is centered on Model UN governance, competitive debate, and independent writing.
+          <p class="hero-body fade-in delay-2">
+            I’m a student focused on economics, politics, and history, preparing for PPE at university. Outside the classroom, my work centers on Model UN governance, parliamentary debate, and independent writing.
           </p>
 
-          <div class="btn-group">
+          <div class="btn-group fade-in delay-3">
             <a href="/about" class="btn-primary">
               <span>About Me</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="/cv" class="btn-secondary">View CV</a>
+            <a href="/cv" class="btn-secondary">View Academic CV</a>
           </div>
         </div>
 
-        <div class="hero-right">
-          <div class="portrait-container">
-            <img 
-              src="/profile.png" 
-              alt="Philip Voultsos" 
-              class="portrait-img"
-              onerror="this.parentElement.style.display='none'"
-            />
+        <div class="hero-right fade-in delay-2">
+          <div class="portrait-stage">
+            <div class="portrait-glow"></div>
+            <div class="portrait-container">
+              <img 
+                src="/profile.png" 
+                alt="Philip Voultsos" 
+                class="portrait-img"
+                onerror="this.parentElement.parentElement.style.display='none'"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- Navigation Directory: Outlining the Rest of the Website -->
-      <section class="directory-section">
+      <!-- Directory Section with Spotlight Cards -->
+      <section class="directory-section fade-in delay-3">
         <div class="section-title-wrap">
           <h2>Site Directory</h2>
-          <span class="section-hint">Explore sections</span>
+          <span class="section-hint">Explore Sections</span>
         </div>
 
         <div class="directory-grid">
           <!-- About Card -->
-          <a href="/about" class="glass-panel directory-card">
-            <div class="card-header">
-              <span class="card-step">01</span>
-              <span class="badge">Background</span>
-            </div>
-            <h3>About</h3>
-            <p>
-              Background, academic direction, and personal statement outlining my focus in political economy and philosophy.
-            </p>
-            <div class="card-action">
-              <span>Read statement</span>
-              <span class="arrow">&rarr;</span>
+          <a href="/about" class="spotlight-card">
+            <div class="spotlight-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <span class="card-step">01</span>
+                <span class="card-pill">Background</span>
+              </div>
+              <h3>About</h3>
+              <p>
+                Academic direction, personal profile, and background outlining my focus in political economy and philosophy.
+              </p>
+              <div class="card-action">
+                <span>Read statement</span>
+                <span class="arrow">&rarr;</span>
+              </div>
             </div>
           </a>
 
           <!-- CV Card -->
-          <a href="/cv" class="glass-panel directory-card">
-            <div class="card-header">
-              <span class="card-step">02</span>
-              <span class="badge">Experience</span>
-            </div>
-            <h3>Curriculum Vitae</h3>
-            <p>
-              Academic coursework, examination marks, leadership appointments, and conference secretariat records.
-            </p>
-            <div class="card-action">
-              <span>View credentials</span>
-              <span class="arrow">&rarr;</span>
+          <a href="/cv" class="spotlight-card">
+            <div class="spotlight-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <span class="card-step">02</span>
+                <span class="card-pill">Credentials</span>
+              </div>
+              <h3>Curriculum Vitae</h3>
+              <p>
+                Examination marks, leadership appointments, conference secretariat leadership, and debate honors.
+              </p>
+              <div class="card-action">
+                <span>View credentials</span>
+                <span class="arrow">&rarr;</span>
+              </div>
             </div>
           </a>
 
           <!-- Writing Card -->
-          <a href="/blog" class="glass-panel directory-card">
-            <div class="card-header">
-              <span class="card-step">03</span>
-              <span class="badge">Archive</span>
-            </div>
-            <h3>Writing & Research</h3>
-            <p>
-              Independent essays, supercurricular competition submissions, and commentary on economic theory and international policy.
-            </p>
-            <div class="card-action">
-              <span>Browse papers</span>
-              <span class="arrow">&rarr;</span>
+          <a href="/blog" class="spotlight-card">
+            <div class="spotlight-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <span class="card-step">03</span>
+                <span class="card-pill">Archive</span>
+              </div>
+              <h3>Writing & Research</h3>
+              <p>
+                Supercurricular competition essays, policy commentary, and analytical papers on political economy.
+              </p>
+              <div class="card-action">
+                <span>Browse archive</span>
+                <span class="arrow">&rarr;</span>
+              </div>
             </div>
           </a>
         </div>
       </section>
     </main>
     <Footer />
+
+    <!-- Dynamic Framer-style Spotlight Script -->
+    <script>
+      const cards = document.querySelectorAll('.spotlight-card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        });
+      });
+    </script>
   </body>
 </html>
 
@@ -118,8 +145,8 @@ import Footer from '../components/Footer.astro';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 3.5rem;
-    padding: 2.5rem 0 3.5rem;
+    gap: 4rem;
+    padding: 3rem 0 4rem;
     border-bottom: 1px solid var(--glass-border);
     margin-bottom: 3.5rem;
   }
@@ -127,61 +154,99 @@ import Footer from '../components/Footer.astro';
     flex: 1;
   }
   .status-indicator {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.65rem;
     background: var(--glass-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    padding: 0.35rem 0.85rem;
+    padding: 0.35rem 0.95rem;
     border-radius: 9999px;
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--primary);
-    margin-bottom: 1.25rem;
-    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 73, 83, 0.05);
   }
   .status-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: #10b981;
+    z-index: 2;
   }
-  .hero-title {
-    margin-bottom: 1rem;
+  .status-pulse-ring {
+    position: absolute;
+    left: 15px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10b981;
+    animation: ringPulse 2.4s infinite cubic-bezier(0.24, 0, 0.38, 1);
   }
-  .hero-body {
-    font-size: 1.15rem;
-    margin-bottom: 2rem;
-    max-width: 580px;
-    color: var(--text-muted);
+  @keyframes ringPulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    70% { transform: scale(3.2); opacity: 0; }
+    100% { transform: scale(3.2); opacity: 0; }
   }
 
-  /* Portrait Image Frame */
+  .hero-title {
+    margin-bottom: 1.15rem;
+  }
+  .hero-body {
+    font-size: 1.2rem;
+    line-height: 1.65;
+    margin-bottom: 2.25rem;
+    max-width: 600px;
+  }
+
+  /* Interactive Portrait with Glow */
   .hero-right {
     flex-shrink: 0;
   }
-  .portrait-container {
-    background: var(--glass-surface);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border);
-    padding: 8px;
-    border-radius: 28px;
-    box-shadow: var(--shadow-md);
-    transition: transform 0.25s ease;
+  .portrait-stage {
+    position: relative;
   }
-  .portrait-container:hover {
-    transform: translateY(-2px);
+  .portrait-glow {
+    position: absolute;
+    inset: -15px;
+    background: radial-gradient(circle, rgba(0, 73, 83, 0.25) 0%, transparent 70%);
+    filter: blur(25px);
+    border-radius: 40px;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+  }
+  .portrait-container {
+    position: relative;
+    z-index: 2;
+    background: var(--glass-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 32px;
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 73, 83, 0.05),
+      0 20px 40px -8px rgba(0, 73, 83, 0.16);
+    transition: transform 0.4s var(--spring-bounce), box-shadow 0.4s var(--spring-ease);
+  }
+  .portrait-stage:hover .portrait-container {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 
+      0 4px 6px -1px rgba(0, 73, 83, 0.08),
+      0 28px 50px -10px rgba(0, 73, 83, 0.22);
   }
   .portrait-img {
-    width: 190px;
-    height: 190px;
+    width: 205px;
+    height: 205px;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 24px;
     display: block;
   }
 
-  /* Directory Section */
+  /* Directory & Dynamic Spotlight Cards */
   .directory-section {
     margin-bottom: 2rem;
   }
@@ -189,35 +254,75 @@ import Footer from '../components/Footer.astro';
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.75rem;
   }
   .section-hint {
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.85rem;
+    font-weight: 700;
     color: var(--secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
   }
-
-  /* Directory Grid Cards */
   .directory-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     gap: 1.5rem;
   }
-  .directory-card {
+
+  /* Spotlight Card Architecture */
+  .spotlight-card {
+    position: relative;
+    background: var(--glass-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.25rem 1.85rem;
+    text-decoration: none;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-decoration: none;
-    padding: 2rem 1.75rem;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 20px -2px rgba(0, 73, 83, 0.04);
+    transition: transform 0.35s var(--spring-bounce), border-color 0.3s ease, box-shadow 0.35s var(--spring-ease);
+    will-change: transform;
   }
-  .directory-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--glass-border-focus);
-    box-shadow: var(--shadow-lg);
+
+  /* Spotlight Mouse Glow effect */
+  .spotlight-glow {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+      450px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(0, 73, 83, 0.12),
+      transparent 80%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
   }
+
+  .spotlight-card:hover .spotlight-glow {
+    opacity: 1;
+  }
+
+  .spotlight-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0, 73, 83, 0.35);
+    box-shadow: 0 20px 45px -8px rgba(0, 73, 83, 0.12);
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   .card-header {
     display: flex;
     justify-content: space-between;
@@ -226,48 +331,59 @@ import Footer from '../components/Footer.astro';
   }
   .card-step {
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 800;
     color: var(--secondary);
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em;
   }
-  .directory-card h3 {
+  .card-pill {
+    font-size: 0.8rem;
+    font-weight: 600;
     color: var(--primary);
-    font-size: 1.35rem;
-    margin-bottom: 0.6rem;
-    transition: color 0.15s ease;
+    background: rgba(0, 73, 83, 0.06);
+    padding: 0.25rem 0.65rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(0, 73, 83, 0.08);
   }
-  .directory-card:hover h3 {
+
+  .spotlight-card h3 {
+    color: var(--primary);
+    font-size: 1.45rem;
+    margin-bottom: 0.65rem;
+    transition: color 0.2s ease;
+  }
+  .spotlight-card:hover h3 {
     color: var(--secondary);
   }
-  .directory-card p {
-    font-size: 0.975rem;
-    line-height: 1.55;
-    margin-bottom: 1.75rem;
+  .spotlight-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
     color: var(--text-muted);
   }
+
   .card-action {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
     color: var(--primary);
     margin-top: auto;
   }
   .arrow {
-    transition: transform 0.2s ease;
+    transition: transform 0.25s var(--spring-bounce);
   }
-  .directory-card:hover .arrow {
-    transform: translateX(4px);
+  .spotlight-card:hover .arrow {
+    transform: translateX(6px);
   }
 
-  /* Responsive Mobile Layout */
+  /* Responsive Mobile Breakpoint */
   @media (max-width: 768px) {
     .hero-module {
       flex-direction: column-reverse;
       text-align: center;
-      gap: 2rem;
-      padding: 1.5rem 0 2.5rem;
+      gap: 2.25rem;
+      padding: 1.75rem 0 2.75rem;
     }
     .hero-body {
       margin-left: auto;
@@ -277,8 +393,8 @@ import Footer from '../components/Footer.astro';
       justify-content: center;
     }
     .portrait-img {
-      width: 160px;
-      height: 160px;
+      width: 170px;
+      height: 170px;
     }
     .directory-grid {
       grid-template-columns: 1fr;
