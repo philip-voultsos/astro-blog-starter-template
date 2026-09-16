@@ -1,14 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap');
 
 :root {
+  /* Brand Green Palette */
   --primary: #004953;
   --secondary: #497d7b;
-  --subtle-bg: #f4f8f8;
-  --card-border: #e3eded;
-  --bg-color: #ffffff;
-  --text-main: #141718;
-  --text-muted: #536262;
-  --font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --primary-glow: rgba(0, 73, 83, 0.08);
+  --secondary-glow: rgba(73, 125, 123, 0.15);
+  
+  /* Canvas & Layers */
+  --bg-color: #fafcfc;
+  --surface: #ffffff;
+  --surface-muted: #f2f7f7;
+  --border-subtle: rgba(0, 73, 83, 0.12);
+  --border-hover: rgba(0, 73, 83, 0.35);
+
+  /* Typography */
+  --text-main: #111818;
+  --text-muted: #4e6262;
+  --text-subtle: #7a8f8f;
+  
+  /* Fonts */
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Newsreader', Georgia, serif;
+  --font-display: 'Cinzel', serif;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 73, 83, 0.04);
+  --shadow-md: 0 10px 30px -5px rgba(0, 73, 83, 0.08);
+  --shadow-lg: 0 20px 40px -10px rgba(0, 73, 83, 0.14);
 }
 
 * {
@@ -18,7 +37,7 @@
 }
 
 body {
-  font-family: var(--font-family);
+  font-family: var(--font-sans);
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.65;
@@ -26,104 +45,151 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+  /* Ambient atmospheric background lighting */
+  background-image: 
+    radial-gradient(circle at 15% 10%, var(--primary-glow) 0%, transparent 45%),
+    radial-gradient(circle at 85% 65%, var(--secondary-glow) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
 main {
   flex: 1;
   width: 100%;
-  max-width: 860px;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 3rem 1.5rem 5rem;
+  padding: 3.5rem 1.5rem 6rem;
 }
 
+/* Headings */
 h1, h2, h3, h4 {
   color: var(--primary);
+  letter-spacing: -0.025em;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
-h1 { font-size: 2.25rem; margin-bottom: 1rem; }
-h2 { font-size: 1.6rem; margin: 2rem 0 1rem; }
-h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+h1 {
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  font-family: var(--font-sans);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--border-subtle), transparent);
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
 
 p {
+  color: var(--text-muted);
   margin-bottom: 1.25rem;
-  color: var(--text-main);
+  font-size: 1.025rem;
 }
 
+/* Links */
 a {
   color: var(--primary);
   text-decoration: underline;
   text-decoration-color: var(--secondary);
   text-underline-offset: 4px;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 a:hover {
   color: var(--secondary);
+  text-decoration-color: var(--primary);
 }
 
-/* UI Elements */
-.badge {
-  display: inline-block;
-  background-color: var(--subtle-bg);
-  color: var(--primary);
-  border: 1px solid var(--card-border);
-  padding: 0.25rem 0.65rem;
-  border-radius: 9999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
+/* Modern Card Architecture */
 .card {
-  background: var(--bg-color);
-  border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 1.25rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 73, 83, 0.07);
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-lg);
 }
 
+/* Interactive Pill Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: var(--surface-muted);
+  color: var(--primary);
+  border: 1px solid var(--border-subtle);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+/* Primary and Secondary Action Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
-  background-color: var(--primary);
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--primary) 0%, #00363d 100%);
   color: #ffffff;
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
+  padding: 0.85rem 1.6rem;
+  border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
-  transition: background-color 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 73, 83, 0.22);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn:hover {
-  background-color: var(--secondary);
+  background: linear-gradient(135deg, #005a66 0%, var(--primary) 100%);
   color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(0, 73, 83, 0.32);
 }
 
 .btn-secondary {
-  background-color: transparent;
+  background: transparent;
   color: var(--primary);
-  border: 1.5px solid var(--primary);
-  margin-left: 0.5rem;
+  border: 1.5px solid var(--border-hover);
+  box-shadow: none;
 }
 
 .btn-secondary:hover {
-  background-color: var(--subtle-bg);
+  background-color: var(--surface-muted);
   color: var(--primary);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 640px) {
-  h1 { font-size: 1.85rem; }
-  h2 { font-size: 1.35rem; }
-  main { padding: 2rem 1.25rem 4rem; }
+  main {
+    padding: 2.25rem 1.25rem 4rem;
+  }
 }
