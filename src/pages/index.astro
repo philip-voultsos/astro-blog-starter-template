@@ -13,142 +13,178 @@ import Footer from '../components/Footer.astro';
     />
   </head>
   <body>
-    <!-- Full-screen Dynamic Cursor Glow -->
+    <!-- Hardware-Accelerated Ambient Glow -->
     <div id="global-glow"></div>
 
-    <Header />
-    <main>
-      <!-- Hero Section with Contextual Portrait Anchor -->
-      <section class="hero-module">
-        <div class="hero-left">
-          <div class="status-indicator fade-in delay-1">
-            <span class="status-pulse-ring"></span>
-            <span class="status-dot"></span>
-            <span>Sixth-Form Scholar &bull; Athens</span>
+    <!-- Virtual Viewport for Smooth Inertial Physics -->
+    <div id="scroll-container">
+      <Header />
+      <main>
+        <!-- Hero Section -->
+        <section class="hero-module">
+          <div class="hero-left">
+            <div class="status-indicator fade-in delay-1">
+              <span class="status-pulse-ring"></span>
+              <span class="status-dot"></span>
+              <span>Sixth-Form Scholar &bull; Athens</span>
+            </div>
+
+            <h1 class="hero-title fade-in delay-2">Philip Voultsos</h1>
+            
+            <p class="hero-body fade-in delay-2">
+              I’m a student focused on economics, politics, and history, preparing for PPE at university. Outside the classroom, my work centers on Model UN governance, parliamentary debate, and independent writing.
+            </p>
+
+            <div class="btn-group fade-in delay-3">
+              <a href="/about" class="btn-primary physics-btn">
+                <span>About Me</span>
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="/cv" class="btn-secondary physics-btn">View Academic CV</a>
+            </div>
           </div>
 
-          <h1 class="hero-title fade-in delay-2">Philip Voultsos</h1>
-          
-          <p class="hero-body fade-in delay-2">
-            I’m a student focused on economics, politics, and history, preparing for PPE at university. Outside the classroom, my work centers on Model UN governance, competitive debate, and independent writing.
-          </p>
+          <!-- 3D Tilting Academic ID Card -->
+          <div class="hero-right fade-in delay-2">
+            <div class="id-card tilt-element">
+              <div class="id-inner">
+                <div class="portrait-box">
+                  <img 
+                    src="/profile.png" 
+                    alt="Philip Voultsos" 
+                    class="portrait-img"
+                    onerror="this.parentElement.parentElement.parentElement.style.display='none'"
+                  />
+                </div>
+                <div class="id-details">
+                  <div class="id-meta">
+                    <span class="id-name">Philip Voultsos</span>
+                    <span class="id-role">PPE & Diplomacy</span>
+                  </div>
+                  <div class="id-status-pill">
+                    <span class="badge-mini">BCIMUN 2027</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-          <div class="btn-group fade-in delay-3">
-            <a href="/about" class="btn-primary">
-              <span>About Me</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <!-- Minimal Directory Grid with 3D Physics -->
+        <section class="directory-section fade-in delay-3">
+          <div class="section-title-wrap">
+            <h2>Site Directory</h2>
+            <span class="section-hint">Explore Sections</span>
+          </div>
+
+          <div class="directory-grid">
+            <!-- About Card -->
+            <a href="/about" class="spotlight-card tilt-element">
+              <div class="spotlight-glow"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="card-step">01</span>
+                  <span class="card-pill">Background</span>
+                </div>
+                <h3>About</h3>
+                <p>
+                  Academic direction, personal statement, and research interests in political economy and philosophy.
+                </p>
+                <div class="card-action">
+                  <span>Read statement</span>
+                  <span class="arrow">&rarr;</span>
+                </div>
+              </div>
             </a>
-            <a href="/cv" class="btn-secondary">View Academic CV</a>
-          </div>
-        </div>
 
-        <!-- Meaningful Portrait Card: Positioned as an Academic ID Anchor -->
-        <div class="hero-right fade-in delay-2">
-          <div class="id-card">
-            <div class="id-inner">
-              <div class="portrait-box">
-                <img 
-                  src="/profile.png" 
-                  alt="Philip Voultsos" 
-                  class="portrait-img"
-                  onerror="this.parentElement.parentElement.parentElement.style.display='none'"
-                />
-              </div>
-              <div class="id-details">
-                <div class="id-meta">
-                  <span class="id-name">Philip Voultsos</span>
-                  <span class="id-role">PPE & Diplomacy</span>
+            <!-- CV Card -->
+            <a href="/cv" class="spotlight-card tilt-element">
+              <div class="spotlight-glow"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="card-step">02</span>
+                  <span class="card-pill">Credentials</span>
                 </div>
-                <div class="id-status-pill">
-                  <span class="badge-mini">BCIMUN 2027</span>
+                <h3>Curriculum Vitae</h3>
+                <p>
+                  Examination marks, leadership appointments, conference secretariat leadership, and debate honors.
+                </p>
+                <div class="card-action">
+                  <span>View credentials</span>
+                  <span class="arrow">&rarr;</span>
                 </div>
               </div>
-            </div>
+            </a>
+
+            <!-- Writing Card -->
+            <a href="/blog" class="spotlight-card tilt-element">
+              <div class="spotlight-glow"></div>
+              <div class="card-content">
+                <div class="card-header">
+                  <span class="card-step">03</span>
+                  <span class="card-pill">Archive</span>
+                </div>
+                <h3>Writing & Research</h3>
+                <p>
+                  Supercurricular competition essays, policy commentary, and analytical papers on political economy.
+                </p>
+                <div class="card-action">
+                  <span>Browse archive</span>
+                  <span class="arrow">&rarr;</span>
+                </div>
+              </div>
+            </a>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
+      <Footer />
+    </div>
 
-      <!-- Minimal, Clean Directory Grid -->
-      <section class="directory-section fade-in delay-3">
-        <div class="section-title-wrap">
-          <h2>Site Directory</h2>
-          <span class="section-hint">Explore Sections</span>
-        </div>
-
-        <div class="directory-grid">
-          <!-- About Card -->
-          <a href="/about" class="spotlight-card">
-            <div class="spotlight-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <span class="card-step">01</span>
-                <span class="card-pill">Background</span>
-              </div>
-              <h3>About</h3>
-              <p>
-                Academic direction, personal statement, and research interests in political economy and philosophy.
-              </p>
-              <div class="card-action">
-                <span>Read statement</span>
-                <span class="arrow">&rarr;</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- CV Card -->
-          <a href="/cv" class="spotlight-card">
-            <div class="spotlight-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <span class="card-step">02</span>
-                <span class="card-pill">Credentials</span>
-              </div>
-              <h3>Curriculum Vitae</h3>
-              <p>
-                Examination marks, leadership appointments, conference secretariat leadership, and debate honors.
-              </p>
-              <div class="card-action">
-                <span>View credentials</span>
-                <span class="arrow">&rarr;</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- Writing Card -->
-          <a href="/blog" class="spotlight-card">
-            <div class="spotlight-glow"></div>
-            <div class="card-content">
-              <div class="card-header">
-                <span class="card-step">03</span>
-                <span class="card-pill">Archive</span>
-              </div>
-              <h3>Writing & Research</h3>
-              <p>
-                Supercurricular competition essays, policy commentary, and analytical papers on political economy.
-              </p>
-              <div class="card-action">
-                <span>Browse archive</span>
-                <span class="arrow">&rarr;</span>
-              </div>
-            </div>
-          </a>
-        </div>
-      </section>
-    </main>
-    <Footer />
-
-    <!-- Screen-wide Dynamic Cursor Tracking Script -->
+    <!-- Physics & Interaction Engine -->
     <script>
+      // 1. Damped Smooth Scroll Engine (Framer-like Inertia)
+      let currentY = window.scrollY;
+      let targetY = window.scrollY;
+      const ease = 0.082; // Momentum resistance factor
+
+      const scrollContainer = document.getElementById('scroll-container');
       const glow = document.getElementById('global-glow');
+
+      // Sync document height for natural browser scrollbar
+      function updateBodyHeight() {
+        document.body.style.height = `${scrollContainer.getBoundingClientRect().height}px`;
+      }
+      window.addEventListener('resize', updateBodyHeight);
+      updateBodyHeight();
+
+      window.addEventListener('scroll', () => {
+        targetY = window.scrollY;
+      }, { passive: true });
+
+      function physicsLoop() {
+        // Interpolate position with damped spring curve
+        currentY += (targetY - currentY) * ease;
+        const roundedY = Math.round(currentY * 100) / 100;
+        
+        if (scrollContainer) {
+          scrollContainer.style.transform = `translate3d(0, -${roundedY}px, 0)`;
+        }
+
+        requestAnimationFrame(physicsLoop);
+      }
+      requestAnimationFrame(physicsLoop);
+
+      // 2. Cursor Follower & 3D Interactive Spring Tilt
+      const tiltElements = document.querySelectorAll('.tilt-element');
       const cards = document.querySelectorAll('.spotlight-card');
 
       window.addEventListener('mousemove', (e) => {
-        // Global screen glow
+        // Global ambient glow physics
         if (glow) {
-          glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+          glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
         }
 
-        // Card-specific spotlight border sheen
+        // Card cursor sheens
         cards.forEach(card => {
           const rect = card.getBoundingClientRect();
           const x = e.clientX - rect.left;
@@ -156,12 +192,54 @@ import Footer from '../components/Footer.astro';
           card.style.setProperty('--mouse-x', `${x}px`);
           card.style.setProperty('--mouse-y', `${y}px`);
         });
+
+        // 3D Card Perspective Tilt
+        tiltElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const isHovered = (
+            e.clientX >= rect.left &&
+            e.clientX <= rect.right &&
+            e.clientY >= rect.top &&
+            e.clientY <= rect.bottom
+          );
+
+          if (isHovered) {
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const deltaX = (e.clientX - centerX) / (rect.width / 2);
+            const deltaY = (e.clientY - centerY) / (rect.height / 2);
+
+            // Subtle rotation limit (8 degrees max)
+            const rotX = -deltaY * 7.5;
+            const rotY = deltaX * 7.5;
+            el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(8px)`;
+          } else {
+            el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+          }
+        });
       });
     </script>
   </body>
 </html>
 
 <style>
+  /* Viewport Architecture for Inertial Momentum */
+  #scroll-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    will-change: transform;
+    pointer-events: auto;
+  }
+
+  /* 3D Perspective Canvas for Tilt Elements */
+  .tilt-element {
+    transform-style: preserve-3d;
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
+    will-change: transform;
+  }
+
   /* Hero Structure */
   .hero-module {
     display: flex;
@@ -225,7 +303,7 @@ import Footer from '../components/Footer.astro';
     color: var(--text-muted);
   }
 
-  /* Meaningful Academic ID Card Integration */
+  /* Academic ID Card Integration */
   .hero-right {
     flex-shrink: 0;
   }
@@ -241,11 +319,6 @@ import Footer from '../components/Footer.astro';
       0 0 0 1px rgba(255, 255, 255, 0.05),
       0 20px 50px -10px rgba(0, 0, 0, 0.7),
       0 0 30px rgba(0, 73, 83, 0.25);
-    transition: transform 0.4s var(--spring-bounce), border-color 0.3s ease;
-  }
-  .id-card:hover {
-    transform: translateY(-4px) scale(1.02);
-    border-color: var(--glass-border-hover);
   }
   .id-inner {
     display: flex;
@@ -318,7 +391,6 @@ import Footer from '../components/Footer.astro';
     gap: 1.5rem;
   }
 
-  /* Spotlight Card Architecture */
   .spotlight-card {
     position: relative;
     background: var(--glass-surface);
@@ -332,11 +404,8 @@ import Footer from '../components/Footer.astro';
     display: flex;
     flex-direction: column;
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-    transition: transform 0.35s var(--spring-bounce), border-color 0.3s ease, box-shadow 0.35s var(--spring-ease);
-    will-change: transform;
   }
 
-  /* Card Mouse Glow effect */
   .spotlight-glow {
     pointer-events: none;
     position: absolute;
@@ -346,7 +415,7 @@ import Footer from '../components/Footer.astro';
     bottom: 0;
     background: radial-gradient(
       500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-      rgba(73, 125, 123, 0.2),
+      rgba(73, 125, 123, 0.22),
       transparent 75%
     );
     opacity: 0;
@@ -356,12 +425,6 @@ import Footer from '../components/Footer.astro';
 
   .spotlight-card:hover .spotlight-glow {
     opacity: 1;
-  }
-
-  .spotlight-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--glass-border-hover);
-    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
   }
 
   .card-content {
@@ -426,8 +489,12 @@ import Footer from '../components/Footer.astro';
     transform: translateX(6px);
   }
 
-  /* Responsive Mobile Breakpoint */
+  /* Responsive Fallback */
   @media (max-width: 768px) {
+    #scroll-container {
+      position: static;
+      transform: none !important;
+    }
     .hero-module {
       flex-direction: column-reverse;
       text-align: center;
