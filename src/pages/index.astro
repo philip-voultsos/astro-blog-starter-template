@@ -15,31 +15,31 @@ import Footer from '../components/Footer.astro';
   <body>
     <Header />
     <main>
-      <!-- Hero Section -->
-      <section class="hero-container">
+      <!-- Hero: Scan-Friendly Z-Pattern -->
+      <section class="hero-module">
         <div class="hero-left">
           <div class="status-indicator">
-            <span class="pulsing-dot"></span>
-            <span class="status-text">Student &bull; Athens</span>
+            <span class="status-dot"></span>
+            <span>Sixth-Form Scholar &bull; Athens</span>
           </div>
 
           <h1 class="hero-title">Philip Voultsos</h1>
           
-          <p class="hero-tagline">
-            I’m a sixth-form student interested in economics, politics, and history—planning to study PPE at university. Most of my time outside classes goes into Model UN, competitive debate, and independent reading.
+          <p class="hero-body">
+            I’m a student focused on economics, politics, and history, aiming toward PPE at university. Outside coursework, most of my focus goes into Model UN governance, parliamentary debate, and essay writing.
           </p>
 
-          <div class="hero-actions">
-            <a href="/cv" class="btn">
-              <span>View CV & Experience</span>
+          <div class="btn-group">
+            <a href="/cv" class="btn-primary">
+              <span>Academic CV & Roles</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="/blog" class="btn btn-secondary">Read My Writing</a>
+            <a href="/blog" class="btn-secondary">Read Essays & Papers</a>
           </div>
         </div>
 
         <div class="hero-right">
-          <div class="portrait-frame">
+          <div class="portrait-container">
             <img 
               src="/profile.png" 
               alt="Philip Voultsos" 
@@ -50,83 +50,88 @@ import Footer from '../components/Footer.astro';
         </div>
       </section>
 
-      <!-- Quick Context Strip -->
-      <section class="highlight-band">
-        <div class="band-card">
-          <span class="band-num">BCIMUN</span>
-          <span class="band-label">Secretariat & Organizing</span>
+      <!-- Key Roles / Pillars Strip -->
+      <section class="metrics-grid">
+        <div class="glass-panel metric-box">
+          <span class="metric-tag">Leadership</span>
+          <h3 class="metric-title">BCIMUN 2027</h3>
+          <p class="metric-desc">Secretary-General & Student Head of the Organising Committee.</p>
         </div>
-        <div class="band-card">
-          <span class="band-num">PPE</span>
-          <span class="band-label">Academic Direction</span>
+
+        <div class="glass-panel metric-box">
+          <span class="metric-tag">Academics</span>
+          <h3 class="metric-title">PPE Preparation</h3>
+          <p class="metric-desc">Macroeconomics, political institutions, and historical analysis.</p>
         </div>
-        <div class="band-card">
-          <span class="band-num">Essays</span>
-          <span class="band-label">Notes & Writing Archive</span>
+
+        <div class="glass-panel metric-box">
+          <span class="metric-tag">Publications</span>
+          <h3 class="metric-title">Essays & Briefs</h3>
+          <p class="metric-desc">Supercurricular competition papers and independent policy research.</p>
         </div>
       </section>
 
-      <!-- Main Focus Areas -->
-      <section class="section-block">
-        <h2>What I Work On</h2>
-        <div class="inquiry-grid">
-          <div class="card inquiry-card">
-            <div class="inquiry-badge">Academics</div>
+      <!-- Focused Content Split -->
+      <section class="content-section">
+        <h2>Focus & Engagement</h2>
+        <div class="split-cards">
+          <div class="glass-panel content-card">
+            <span class="badge">Academic Inquiry</span>
             <h3>Economics & Political Theory</h3>
             <p>
-              My reading is focused around macroeconomic policy, public institutions, and how political systems handle economic crises. I use this site to write down long-form thoughts and share competition essays.
+              I read and write on macroeconomic policy, institutional governance, and how states manage market friction during political change.
             </p>
-            <div class="topic-tags">
-              <span class="badge">Macroeconomics</span>
-              <span class="badge">Public Policy</span>
-              <span class="badge">Political Philosophy</span>
+            <div class="tag-row">
+              <span class="mini-tag">Fiscal Policy</span>
+              <span class="mini-tag">Public Governance</span>
+              <span class="mini-tag">Political Philosophy</span>
             </div>
           </div>
 
-          <div class="card inquiry-card">
-            <div class="inquiry-badge">Debate & Leadership</div>
+          <div class="glass-panel content-card">
+            <span class="badge">Conference Administration</span>
             <h3>Model UN & Debate</h3>
             <p>
-              I’ve been involved in MUN for several years as a delegate, chair, and organizer. Currently working on administrative preparations and procedural guides for upcoming conferences.
+              Years of experience spanning delegate positions, committee chairs, crisis teams, and full conference logistics and administration.
             </p>
-            <div class="topic-tags">
-              <span class="badge">Committee Chairing</span>
-              <span class="badge">Conference Organization</span>
-              <span class="badge">Rules of Procedure</span>
+            <div class="tag-row">
+              <span class="mini-tag">Rules of Procedure</span>
+              <span class="mini-tag">Resolution Drafting</span>
+              <span class="mini-tag">Committee Direction</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Writing Showcase -->
-      <section class="section-block">
-        <div class="block-header">
-          <h2>Writing</h2>
-          <a href="/blog" class="inline-link">All posts &rarr;</a>
+      <!-- Featured Writing Showcase -->
+      <section class="content-section">
+        <div class="section-top">
+          <h2>Selected Writing</h2>
+          <a href="/blog" class="all-link">Browse archive &rarr;</a>
         </div>
 
-        <div class="card writing-card">
-          <div class="writing-top">
-            <span class="badge">Essays & Notes</span>
-            <span class="writing-date">Archive</span>
+        <div class="glass-panel writing-showcase">
+          <div class="writing-meta">
+            <span class="badge">Archive</span>
+            <span class="writing-date">Policy & Theory</span>
           </div>
-          <h3 class="writing-title">
-            <a href="/blog">Essays, competition entries, and commentary</a>
-          </h3>
+          <h3><a href="/blog" class="writing-link">Essays, Competition Entries & Policy Commentary</a></h3>
           <p>
-            A collection of papers I’ve written for essay competitions, supercurricular study, and topics in history and political economy that I wanted to dig into properly.
+            A curated archive of research papers, essay competition submissions, and long-form analysis covering international relations and economic policy.
           </p>
-          <a href="/blog" class="writing-cta">Browse articles &rarr;</a>
+          <div class="writing-footer">
+            <a href="/blog" class="btn-secondary" style="height: 40px; padding: 0 1.25rem;">Open Writing Archive</a>
+          </div>
         </div>
       </section>
 
-      <!-- Contact Banner -->
-      <section class="inquiry-banner">
-        <div class="banner-content">
-          <h3>Get in touch</h3>
-          <p>If you want to discuss a paper, coordinate on an MUN conference, or just say hello.</p>
+      <!-- Clean Contact Banner -->
+      <section class="contact-banner glass-panel">
+        <div>
+          <h3>Inquiries & Collaboration</h3>
+          <p>Get in touch for debate engagements, conference coordination, or academic discussion.</p>
         </div>
-        <a href="mailto:philip@voultsos.com" class="btn">Send an email</a>
+        <a href="mailto:philip@voultsos.com" class="btn-primary">philip@voultsos.com</a>
       </section>
     </main>
     <Footer />
@@ -134,171 +139,152 @@ import Footer from '../components/Footer.astro';
 </html>
 
 <style>
-  .hero-container {
+  /* Hero Structure */
+  .hero-module {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 3.5rem;
-    padding: 2rem 0 3.5rem;
-    border-bottom: 1px solid var(--border-subtle);
-    margin-bottom: 3.5rem;
+    padding: 2.5rem 0 3.5rem;
+    margin-bottom: 2rem;
   }
   .hero-left {
     flex: 1;
   }
-  .hero-title {
-    margin-bottom: 1rem;
-    letter-spacing: -0.03em;
-  }
-  .hero-tagline {
-    font-size: 1.2rem;
-    line-height: 1.65;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    max-width: 620px;
-  }
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.85rem;
-  }
-
   .status-indicator {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background-color: var(--surface);
-    border: 1px solid var(--border-subtle);
+    background: var(--glass-surface);
+    border: 1px solid var(--glass-border);
     padding: 0.35rem 0.85rem;
     border-radius: 9999px;
-    margin-bottom: 1.5rem;
-    box-shadow: var(--shadow-sm);
-  }
-  .status-text {
-    font-size: 0.825rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--primary);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-sm);
   }
-  .pulsing-dot {
+  .status-dot {
     width: 8px;
     height: 8px;
     border-radius: 50%;
     background-color: #10b981;
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
-    animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
   }
-  @keyframes pulse {
-    to {
-      box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-    }
+  .hero-title {
+    margin-bottom: 1rem;
+  }
+  .hero-body {
+    font-size: 1.15rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
   }
 
+  /* Portrait */
   .hero-right {
     flex-shrink: 0;
   }
-  .portrait-frame {
-    position: relative;
+  .portrait-container {
+    background: var(--glass-surface);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
     padding: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border-subtle);
     border-radius: 28px;
     box-shadow: var(--shadow-md);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  .portrait-frame:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
   }
   .portrait-img {
-    width: 195px;
-    height: 195px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 20px;
     display: block;
   }
 
-  .highlight-band {
+  /* Metrics 3-Card Band */
+  .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
     gap: 1.25rem;
     margin-bottom: 4rem;
   }
-  .band-card {
-    background: var(--surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    padding: 1.25rem 1rem;
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    transition: border-color 0.2s ease, transform 0.2s ease;
+  .metric-box {
+    padding: 1.5rem;
   }
-  .band-card:hover {
-    border-color: var(--border-hover);
-    transform: translateY(-2px);
-  }
-  .band-num {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 1.35rem;
+  .metric-tag {
+    font-size: 0.75rem;
     font-weight: 700;
-    color: var(--primary);
-    letter-spacing: 0.05em;
-    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--secondary);
+    display: block;
+    margin-bottom: 0.5rem;
   }
-  .band-label {
-    font-size: 0.825rem;
-    font-weight: 500;
-    color: var(--text-subtle);
+  .metric-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.35rem;
+  }
+  .metric-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
   }
 
-  .section-block {
+  /* Section Spacing & Hierarchy */
+  .content-section {
     margin-bottom: 4rem;
   }
-  .inquiry-grid {
+  .section-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1.5rem;
+  }
+  .all-link {
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+  .all-link:hover {
+    color: var(--secondary);
+  }
+
+  /* Split Cards */
+  .split-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
   }
-  .inquiry-card {
+  .content-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  .inquiry-badge {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--secondary);
-    margin-bottom: 0.75rem;
+  .content-card h3 {
+    margin-top: 0.85rem;
   }
-  .topic-tags {
+  .tag-row {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-top: 1.25rem;
+    margin-top: 1.5rem;
+  }
+  .mini-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: rgba(0, 73, 83, 0.04);
+    padding: 0.25rem 0.65rem;
+    border-radius: 6px;
+    border: 1px solid var(--glass-border);
   }
 
-  .block-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  /* Writing Showcase */
+  .writing-showcase {
+    padding: 2.25rem;
   }
-  .inline-link {
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--primary);
-    text-decoration: none;
-  }
-  .inline-link:hover {
-    color: var(--secondary);
-  }
-  .writing-card {
-    padding: 2rem;
-  }
-  .writing-top {
+  .writing-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -306,70 +292,60 @@ import Footer from '../components/Footer.astro';
   }
   .writing-date {
     font-size: 0.85rem;
-    color: var(--text-subtle);
-  }
-  .writing-title a {
-    text-decoration: none;
-    color: var(--primary);
-    transition: color 0.2s ease;
-  }
-  .writing-title a:hover {
+    font-weight: 600;
     color: var(--secondary);
   }
-  .writing-cta {
-    display: inline-block;
-    margin-top: 0.75rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    color: var(--primary);
+  .writing-link {
     text-decoration: none;
+    color: var(--primary);
   }
-  .writing-cta:hover {
-    text-decoration: underline;
+  .writing-link:hover {
+    color: var(--secondary);
+  }
+  .writing-footer {
+    margin-top: 1.5rem;
   }
 
-  .inquiry-banner {
+  /* Contact Glass Banner */
+  .contact-banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
-    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-muted) 100%);
-    border: 1px solid var(--border-subtle);
-    border-radius: 18px;
-    padding: 2.25rem;
-    box-shadow: var(--shadow-sm);
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, var(--glass-surface) 0%, rgba(242, 247, 247, 0.8) 100%);
+    margin-top: 2rem;
   }
-  .banner-content h3 {
-    color: var(--primary);
-    margin-bottom: 0.35rem;
+  .contact-banner h3 {
+    margin-bottom: 0.25rem;
   }
-  .banner-content p {
-    color: var(--text-muted);
+  .contact-banner p {
     margin: 0;
   }
 
+  /* Responsive Breakdown */
   @media (max-width: 768px) {
-    .hero-container {
+    .hero-module {
       flex-direction: column-reverse;
       text-align: center;
       gap: 2rem;
       padding: 1.5rem 0 2.5rem;
     }
-    .hero-tagline {
+    .hero-body {
       margin-left: auto;
       margin-right: auto;
     }
-    .hero-actions {
-      justify-content: center;
+    .portrait-img {
+      width: 160px;
+      height: 160px;
     }
-    .highlight-band {
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
-    }
-    .inquiry-banner {
+    .contact-banner {
       flex-direction: column;
       text-align: center;
-      padding: 1.75rem;
+      padding: 2rem 1.5rem;
+    }
+    .contact-banner .btn-primary {
+      width: 100%;
     }
   }
 </style>
