@@ -13,9 +13,12 @@ import Footer from '../components/Footer.astro';
     />
   </head>
   <body>
+    <!-- Full-screen Dynamic Cursor Glow -->
+    <div id="global-glow"></div>
+
     <Header />
     <main>
-      <!-- Hero Section with Spring Animations -->
+      <!-- Hero Section with Contextual Portrait Anchor -->
       <section class="hero-module">
         <div class="hero-left">
           <div class="status-indicator fade-in delay-1">
@@ -27,7 +30,7 @@ import Footer from '../components/Footer.astro';
           <h1 class="hero-title fade-in delay-2">Philip Voultsos</h1>
           
           <p class="hero-body fade-in delay-2">
-            I’m a student focused on economics, politics, and history, preparing for PPE at university. Outside the classroom, my work centers on Model UN governance, parliamentary debate, and independent writing.
+            I’m a student focused on economics, politics, and history, preparing for PPE at university. Outside the classroom, my work centers on Model UN governance, competitive debate, and independent writing.
           </p>
 
           <div class="btn-group fade-in delay-3">
@@ -39,22 +42,33 @@ import Footer from '../components/Footer.astro';
           </div>
         </div>
 
+        <!-- Meaningful Portrait Card: Positioned as an Academic ID Anchor -->
         <div class="hero-right fade-in delay-2">
-          <div class="portrait-stage">
-            <div class="portrait-glow"></div>
-            <div class="portrait-container">
-              <img 
-                src="/profile.png" 
-                alt="Philip Voultsos" 
-                class="portrait-img"
-                onerror="this.parentElement.parentElement.style.display='none'"
-              />
+          <div class="id-card">
+            <div class="id-inner">
+              <div class="portrait-box">
+                <img 
+                  src="/profile.png" 
+                  alt="Philip Voultsos" 
+                  class="portrait-img"
+                  onerror="this.parentElement.parentElement.parentElement.style.display='none'"
+                />
+              </div>
+              <div class="id-details">
+                <div class="id-meta">
+                  <span class="id-name">Philip Voultsos</span>
+                  <span class="id-role">PPE & Diplomacy</span>
+                </div>
+                <div class="id-status-pill">
+                  <span class="badge-mini">BCIMUN 2027</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Directory Section with Spotlight Cards -->
+      <!-- Minimal, Clean Directory Grid -->
       <section class="directory-section fade-in delay-3">
         <div class="section-title-wrap">
           <h2>Site Directory</h2>
@@ -72,7 +86,7 @@ import Footer from '../components/Footer.astro';
               </div>
               <h3>About</h3>
               <p>
-                Academic direction, personal profile, and background outlining my focus in political economy and philosophy.
+                Academic direction, personal statement, and research interests in political economy and philosophy.
               </p>
               <div class="card-action">
                 <span>Read statement</span>
@@ -123,11 +137,19 @@ import Footer from '../components/Footer.astro';
     </main>
     <Footer />
 
-    <!-- Dynamic Framer-style Spotlight Script -->
+    <!-- Screen-wide Dynamic Cursor Tracking Script -->
     <script>
+      const glow = document.getElementById('global-glow');
       const cards = document.querySelectorAll('.spotlight-card');
-      cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
+
+      window.addEventListener('mousemove', (e) => {
+        // Global screen glow
+        if (glow) {
+          glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+        }
+
+        // Card-specific spotlight border sheen
+        cards.forEach(card => {
           const rect = card.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
@@ -166,9 +188,9 @@ import Footer from '../components/Footer.astro';
     border-radius: 9999px;
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--primary);
+    color: var(--primary-bright);
     margin-bottom: 1.5rem;
-    box-shadow: 0 2px 10px rgba(0, 73, 83, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
   }
   .status-dot {
     width: 8px;
@@ -196,57 +218,84 @@ import Footer from '../components/Footer.astro';
     margin-bottom: 1.15rem;
   }
   .hero-body {
-    font-size: 1.2rem;
+    font-size: 1.18rem;
     line-height: 1.65;
     margin-bottom: 2.25rem;
-    max-width: 600px;
+    max-width: 580px;
+    color: var(--text-muted);
   }
 
-  /* Interactive Portrait with Glow */
+  /* Meaningful Academic ID Card Integration */
   .hero-right {
     flex-shrink: 0;
   }
-  .portrait-stage {
+  .id-card {
     position: relative;
-  }
-  .portrait-glow {
-    position: absolute;
-    inset: -15px;
-    background: radial-gradient(circle, rgba(0, 73, 83, 0.25) 0%, transparent 70%);
-    filter: blur(25px);
-    border-radius: 40px;
-    z-index: 1;
-    transition: opacity 0.5s ease;
-  }
-  .portrait-container {
-    position: relative;
-    z-index: 2;
-    background: var(--glass-surface);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    padding: 10px;
-    border-radius: 32px;
+    background: linear-gradient(145deg, rgba(28, 44, 46, 0.7) 0%, rgba(12, 20, 21, 0.9) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 28px;
+    padding: 12px;
     box-shadow: 
-      0 4px 6px -1px rgba(0, 73, 83, 0.05),
-      0 20px 40px -8px rgba(0, 73, 83, 0.16);
-    transition: transform 0.4s var(--spring-bounce), box-shadow 0.4s var(--spring-ease);
+      0 0 0 1px rgba(255, 255, 255, 0.05),
+      0 20px 50px -10px rgba(0, 0, 0, 0.7),
+      0 0 30px rgba(0, 73, 83, 0.25);
+    transition: transform 0.4s var(--spring-bounce), border-color 0.3s ease;
   }
-  .portrait-stage:hover .portrait-container {
+  .id-card:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 
-      0 4px 6px -1px rgba(0, 73, 83, 0.08),
-      0 28px 50px -10px rgba(0, 73, 83, 0.22);
+    border-color: var(--glass-border-hover);
+  }
+  .id-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .portrait-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   .portrait-img {
-    width: 205px;
-    height: 205px;
+    width: 210px;
+    height: 220px;
     object-fit: cover;
-    border-radius: 24px;
     display: block;
+    filter: contrast(1.03) brightness(0.98);
+  }
+  .id-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 6px 4px;
+  }
+  .id-meta {
+    display: flex;
+    flex-direction: column;
+  }
+  .id-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+  .id-role {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+  }
+  .badge-mini {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-bright);
+    background: rgba(73, 125, 123, 0.18);
+    border: 1px solid rgba(73, 125, 123, 0.35);
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
   }
 
-  /* Directory & Dynamic Spotlight Cards */
+  /* Directory & Spotlight Cards */
   .directory-section {
     margin-bottom: 2rem;
   }
@@ -259,9 +308,9 @@ import Footer from '../components/Footer.astro';
   .section-hint {
     font-size: 0.85rem;
     font-weight: 700;
-    color: var(--secondary);
+    color: var(--primary-bright);
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
   }
   .directory-grid {
     display: grid;
@@ -273,8 +322,8 @@ import Footer from '../components/Footer.astro';
   .spotlight-card {
     position: relative;
     background: var(--glass-surface);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
     padding: 2.25rem 1.85rem;
@@ -282,12 +331,12 @@ import Footer from '../components/Footer.astro';
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 20px -2px rgba(0, 73, 83, 0.04);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
     transition: transform 0.35s var(--spring-bounce), border-color 0.3s ease, box-shadow 0.35s var(--spring-ease);
     will-change: transform;
   }
 
-  /* Spotlight Mouse Glow effect */
+  /* Card Mouse Glow effect */
   .spotlight-glow {
     pointer-events: none;
     position: absolute;
@@ -296,9 +345,9 @@ import Footer from '../components/Footer.astro';
     right: 0;
     bottom: 0;
     background: radial-gradient(
-      450px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-      rgba(0, 73, 83, 0.12),
-      transparent 80%
+      500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(73, 125, 123, 0.2),
+      transparent 75%
     );
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -311,8 +360,8 @@ import Footer from '../components/Footer.astro';
 
   .spotlight-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(0, 73, 83, 0.35);
-    box-shadow: 0 20px 45px -8px rgba(0, 73, 83, 0.12);
+    border-color: var(--glass-border-hover);
+    box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.7);
   }
 
   .card-content {
@@ -332,27 +381,27 @@ import Footer from '../components/Footer.astro';
   .card-step {
     font-size: 0.85rem;
     font-weight: 800;
-    color: var(--secondary);
+    color: var(--primary-bright);
     letter-spacing: 0.08em;
   }
   .card-pill {
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--primary);
-    background: rgba(0, 73, 83, 0.06);
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.06);
     padding: 0.25rem 0.65rem;
     border-radius: 9999px;
-    border: 1px solid rgba(0, 73, 83, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .spotlight-card h3 {
-    color: var(--primary);
+    color: #ffffff;
     font-size: 1.45rem;
     margin-bottom: 0.65rem;
     transition: color 0.2s ease;
   }
   .spotlight-card:hover h3 {
-    color: var(--secondary);
+    color: var(--primary-bright);
   }
   .spotlight-card p {
     font-size: 1rem;
@@ -367,7 +416,7 @@ import Footer from '../components/Footer.astro';
     gap: 0.5rem;
     font-size: 0.95rem;
     font-weight: 700;
-    color: var(--primary);
+    color: var(--primary-bright);
     margin-top: auto;
   }
   .arrow {
@@ -382,7 +431,7 @@ import Footer from '../components/Footer.astro';
     .hero-module {
       flex-direction: column-reverse;
       text-align: center;
-      gap: 2.25rem;
+      gap: 2.5rem;
       padding: 1.75rem 0 2.75rem;
     }
     .hero-body {
@@ -392,9 +441,12 @@ import Footer from '../components/Footer.astro';
     .hero-left .btn-group {
       justify-content: center;
     }
+    .id-card {
+      margin: 0 auto;
+    }
     .portrait-img {
-      width: 170px;
-      height: 170px;
+      width: 190px;
+      height: 200px;
     }
     .directory-grid {
       grid-template-columns: 1fr;
