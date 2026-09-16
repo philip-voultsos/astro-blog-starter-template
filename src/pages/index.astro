@@ -2,49 +2,158 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead 
+      title="Philip Voultsos | Academic Portfolio & Writings" 
+      description="Personal portfolio, academic profile, and writings on political economy, diplomacy, and policy." 
+    />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <span class="badge">Academic Portfolio & Research</span>
+        <h1>Philip Voultsos</h1>
+        <p class="tagline">
+          Sixth-form student and debater focused on political economy, institutional governance, and diplomatic history. Aiming toward undergraduate study in Philosophy, Politics, and Economics (PPE).
+        </p>
+        <div class="cta-row">
+          <a href="/cv" class="btn">View Academic CV</a>
+          <a href="/blog" class="btn btn-secondary">Read Essays & Papers</a>
+        </div>
+      </section>
+
+      <!-- Focus Areas Section -->
+      <section class="overview-section">
+        <h2>Areas of Inquiry</h2>
+        <div class="grid-2">
+          <div class="card">
+            <h3>Political Economy & Institutional Design</h3>
+            <p>
+              Investigating the mechanics of fiscal policy, trade dynamics, and how state institutions shape economic incentives and long-term stability.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Diplomacy & Debate Leadership</h3>
+            <p>
+              Extensive background in Model United Nations—from committee chairing and crisis direction to overall secretariat administration and procedural governance.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Writing Preview -->
+      <section class="recent-section">
+        <div class="section-header">
+          <h2>Selected Writings</h2>
+          <a href="/blog" class="arrow-link">View All &rarr;</a>
+        </div>
+
+        <div class="card">
+          <div class="post-meta">
+            <span class="post-tag">Policy & Economics</span>
+            <span class="post-date">Recent</span>
+          </div>
+          <h3><a href="/blog" class="title-link">Supercurricular Essays & Competition Papers</a></h3>
+          <p>
+            An archive of independent research papers, essay competition entries, and commentary on contemporary international affairs and macroeconomic debate.
+          </p>
+        </div>
+      </section>
+
+      <!-- Quick Contact Callout -->
+      <section class="cta-section">
+        <div class="card cta-box">
+          <div>
+            <h3>Academic Inquiries & Collaboration</h3>
+            <p class="cta-subtext">Open to research discussions, debate engagements, and conference coordination.</p>
+          </div>
+          <a href="mailto:philip@voultsos.com" class="btn">Get in Touch</a>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>
+
+<style>
+  .hero-section {
+    padding: 2.5rem 0 3rem;
+    border-bottom: 1px solid var(--card-border);
+    margin-bottom: 2.5rem;
+  }
+  .tagline {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    max-width: 680px;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+  }
+  .post-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+  }
+  .post-tag {
+    color: var(--secondary);
+    font-weight: 600;
+  }
+  .post-date {
+    color: var(--text-muted);
+  }
+  .title-link {
+    text-decoration: none;
+    color: var(--primary);
+  }
+  .title-link:hover {
+    color: var(--secondary);
+  }
+  .arrow-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .arrow-link:hover {
+    color: var(--secondary);
+  }
+  .cta-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    background-color: var(--subtle-bg);
+    border-color: var(--card-border);
+    margin-top: 2.5rem;
+  }
+  .cta-subtext {
+    margin: 0.25rem 0 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+  }
+</style>
