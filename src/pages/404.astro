@@ -1,0 +1,106 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead 
+      title="404 — Page Not Found | Philip Voultsos" 
+      description="Oops... Something went wrong and we can't find what you were looking for." 
+    />
+    <!-- Importing a classical, traditional display serif to clash against DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <Header />
+    <main class="error-wrapper">
+      <div class="error-card">
+        <!-- Giant classical serif 404 -->
+        <span class="error-numeral">404</span>
+        
+        <h1 class="error-title">Oops...</h1>
+        
+        <p class="error-message">
+          Something went wrong and we can’t find what you were looking for.
+        </p>
+
+        <div class="action-container">
+          <a href="/" class="btn back-home-btn">
+            &larr; Return to Homepage
+          </a>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .error-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+
+  .error-card {
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  /* Traditional, classical serif numeral contrasting with DM Sans */
+  .error-numeral {
+    display: block;
+    font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+    font-size: clamp(6rem, 16vw, 10rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: 0.08em;
+    color: var(--primary);
+    opacity: 0.92;
+    margin-bottom: 1.5rem;
+    user-select: none;
+    text-shadow: 0 10px 24px rgba(0, 73, 83, 0.12);
+  }
+
+  .error-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .error-message {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 2.25rem;
+  }
+
+  .action-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .back-home-btn {
+    padding: 0.85rem 1.75rem;
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 640px) {
+    .error-title {
+      font-size: 1.65rem;
+    }
+    .error-message {
+      font-size: 1.05rem;
+    }
+  }
+</style>
