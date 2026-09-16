@@ -8,40 +8,74 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
   <head>
     <BaseHead 
-      title="Philip Voultsos | Academic Portfolio & Writings" 
-      description="Personal portfolio, academic profile, and writings on political economy, diplomacy, and policy." 
+      title="Philip Voultsos | Academic Portfolio & Research" 
+      description="Academic profile, debate leadership, and writings on political economy and institutional governance." 
     />
   </head>
   <body>
     <Header />
     <main>
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <span class="badge">Academic Portfolio & Research</span>
-        <h1>Philip Voultsos</h1>
-        <p class="tagline">
-          Sixth-form student and debater focused on political economy, institutional governance, and diplomatic history. Aiming toward undergraduate study in Philosophy, Politics, and Economics (PPE).
-        </p>
-        <div class="cta-row">
-          <a href="/cv" class="btn">View Academic CV</a>
-          <a href="/blog" class="btn btn-secondary">Read Essays & Papers</a>
+      <!-- Hero Section with Headshot & Intro -->
+      <section class="hero-wrapper">
+        <div class="hero-content">
+          <div class="status-pill">
+            <span class="status-dot"></span>
+            <span>Sixth-Form Scholar &bull; Prospective PPE</span>
+          </div>
+          <h1>Philip Voultsos</h1>
+          <p class="tagline">
+            Student, researcher, and debater focused on macroeconomic policy, political philosophy, and diplomatic history.
+          </p>
+          <div class="cta-row">
+            <a href="/cv" class="btn">View Academic CV</a>
+            <a href="/blog" class="btn btn-secondary">Read Essays & Papers</a>
+          </div>
+        </div>
+
+        <div class="hero-image-box">
+          <img 
+            src="/profile.png" 
+            alt="Philip Voultsos" 
+            class="headshot"
+            onerror="this.style.display='none'" 
+          />
         </div>
       </section>
 
-      <!-- Focus Areas Section -->
+      <!-- Stat / Highlight Strip -->
+      <section class="stats-strip">
+        <div class="stat-item">
+          <span class="stat-number">BCIMUN</span>
+          <span class="stat-label">Secretariat Leadership</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">PPE</span>
+          <span class="stat-label">Core Academic Focus</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">Essays</span>
+          <span class="stat-label">Policy & Theory Archive</span>
+        </div>
+      </section>
+
+      <!-- Key Academic Focus Areas -->
       <section class="overview-section">
         <h2>Areas of Inquiry</h2>
         <div class="grid-2">
-          <div class="card">
+          <div class="card focus-card">
+            <div class="card-icon">🏛️</div>
             <h3>Political Economy & Institutional Design</h3>
             <p>
-              Investigating the mechanics of fiscal policy, trade dynamics, and how state institutions shape economic incentives and long-term stability.
+              Analyzing macroeconomic frameworks, international trade policies, and the ethical foundations of constitutional governance.
             </p>
           </div>
-          <div class="card">
+          <div class="card focus-card">
+            <div class="card-icon">🌐</div>
             <h3>Diplomacy & Debate Leadership</h3>
             <p>
-              Extensive background in Model United Nations—from committee chairing and crisis direction to overall secretariat administration and procedural governance.
+              Directing parliamentary procedure, coordinating secretariat operations, and chairing high-level committee simulations.
             </p>
           </div>
         </div>
@@ -54,23 +88,24 @@ import Footer from '../components/Footer.astro';
           <a href="/blog" class="arrow-link">View All &rarr;</a>
         </div>
 
-        <div class="card">
+        <div class="card post-preview-card">
           <div class="post-meta">
-            <span class="post-tag">Policy & Economics</span>
-            <span class="post-date">Recent</span>
+            <span class="post-tag">Political Theory & Macro</span>
+            <span class="post-date">Archive</span>
           </div>
-          <h3><a href="/blog" class="title-link">Supercurricular Essays & Competition Papers</a></h3>
+          <h3><a href="/blog" class="title-link">Supercurricular Essays & Research Papers</a></h3>
           <p>
-            An archive of independent research papers, essay competition entries, and commentary on contemporary international affairs and macroeconomic debate.
+            An ongoing collection of analytical essays, competition submissions, and policy papers examining institutional design and historical statecraft.
           </p>
+          <a href="/blog" class="read-more">Read writings &rarr;</a>
         </div>
       </section>
 
-      <!-- Quick Contact Callout -->
+      <!-- Quick Contact Card -->
       <section class="cta-section">
         <div class="card cta-box">
           <div>
-            <h3>Academic Inquiries & Collaboration</h3>
+            <h3>Academic Inquiries & Dialogue</h3>
             <p class="cta-subtext">Open to research discussions, debate engagements, and conference coordination.</p>
           </div>
           <a href="mailto:philip@voultsos.com" class="btn">Get in Touch</a>
@@ -82,15 +117,41 @@ import Footer from '../components/Footer.astro';
 </html>
 
 <style>
-  .hero-section {
-    padding: 2.5rem 0 3rem;
+  /* Hero section with 2 columns */
+  .hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    padding: 2.5rem 0 3.5rem;
     border-bottom: 1px solid var(--card-border);
     margin-bottom: 2.5rem;
   }
+  .hero-content {
+    flex: 1;
+  }
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--subtle-bg);
+    border: 1px solid var(--card-border);
+    padding: 0.35rem 0.85rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.25rem;
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10b981;
+  }
   .tagline {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--text-muted);
-    max-width: 680px;
     line-height: 1.6;
     margin-bottom: 2rem;
   }
@@ -99,18 +160,84 @@ import Footer from '../components/Footer.astro';
     flex-wrap: wrap;
     gap: 0.75rem;
   }
+
+  /* Headshot Styling */
+  .hero-image-box {
+    flex-shrink: 0;
+  }
+  .headshot {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 20px;
+    border: 3px solid var(--card-border);
+    box-shadow: 0 12px 28px rgba(0, 73, 83, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .headshot:hover {
+    transform: scale(1.02);
+    box-shadow: 0 16px 36px rgba(0, 73, 83, 0.18);
+  }
+
+  /* Stat / Highlight Strip */
+  .stats-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: var(--subtle-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    margin-bottom: 3.5rem;
+  }
+  .stat-item {
+    text-align: center;
+  }
+  .stat-number {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.01em;
+  }
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 36px;
+    background-color: var(--card-border);
+  }
+
+  /* Focus Cards */
   .grid-2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.25rem;
     margin-top: 1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
   }
+  .focus-card {
+    position: relative;
+    padding: 1.75rem;
+  }
+  .card-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Recent Writings */
   .section-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 1rem;
+  }
+  .post-preview-card {
+    padding: 1.75rem;
+    margin-bottom: 3rem;
   }
   .post-meta {
     display: flex;
@@ -132,6 +259,17 @@ import Footer from '../components/Footer.astro';
   .title-link:hover {
     color: var(--secondary);
   }
+  .read-more {
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .read-more:hover {
+    text-decoration: underline;
+  }
   .arrow-link {
     font-weight: 600;
     font-size: 0.95rem;
@@ -141,6 +279,8 @@ import Footer from '../components/Footer.astro';
   .arrow-link:hover {
     color: var(--secondary);
   }
+
+  /* CTA Callout */
   .cta-box {
     display: flex;
     justify-content: space-between;
@@ -149,11 +289,43 @@ import Footer from '../components/Footer.astro';
     flex-wrap: wrap;
     background-color: var(--subtle-bg);
     border-color: var(--card-border);
-    margin-top: 2.5rem;
+    padding: 2rem;
   }
   .cta-subtext {
     margin: 0.25rem 0 0;
     color: var(--text-muted);
     font-size: 0.95rem;
+  }
+
+  /* Responsive breakdown for phones */
+  @media (max-width: 680px) {
+    .hero-wrapper {
+      flex-direction: column-reverse;
+      text-align: center;
+      gap: 1.75rem;
+      padding: 1.5rem 0 2.5rem;
+    }
+    .status-pill {
+      margin: 0 auto 1rem;
+    }
+    .cta-row {
+      justify-content: center;
+    }
+    .headshot {
+      width: 150px;
+      height: 150px;
+    }
+    .stats-strip {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .stat-divider {
+      width: 60%;
+      height: 1px;
+    }
+    .cta-box {
+      text-align: center;
+      justify-content: center;
+    }
   }
 </style>
