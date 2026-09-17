@@ -19,7 +19,6 @@ import Footer from '../components/Footer.astro';
       <Header/>
       <main>
         
-        <!-- Adjusted data-tilt to 1.5 to ground the large hero card -->
         <section class="unified-hero bento-card fade-in delay-1 tilt-element" data-tilt="1.5">
           
           <div class="hero-portrait-layer">
@@ -120,7 +119,6 @@ import Footer from '../components/Footer.astro';
       <Footer/>
     </div>
 
-    <!-- Physics, Animation & Temporal Engine -->
     <script>
       // 1. Live Temporal Status
       function updateTime() {
@@ -140,11 +138,7 @@ import Footer from '../components/Footer.astro';
       updateTime(); 
 
       // 2. Intersection Observer Fade-Ins
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.15
-      };
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
@@ -159,7 +153,6 @@ import Footer from '../components/Footer.astro';
       let currentY = window.scrollY;
       let targetY = window.scrollY;
       const ease = 0.085;
-
       const scrollContainer = document.getElementById('scroll-container');
       const glow = document.getElementById('global-glow');
 
@@ -184,7 +177,6 @@ import Footer from '../components/Footer.astro';
         } else if (scrollContainer) {
           scrollContainer.style.transform = 'none';
         }
-
         requestAnimationFrame(physicsLoop);
       }
       requestAnimationFrame(physicsLoop);
@@ -221,15 +213,28 @@ import Footer from '../components/Footer.astro';
             const deltaX = (e.clientX - centerX) / (rect.width / 2);
             const deltaY = (e.clientY - centerY) / (rect.height / 2);
 
-            // Fetch custom tilt multiplier, fallback to 6 for standard cards
             const intensity = el.dataset.tilt ? parseFloat(el.dataset.tilt) : 6;
-
             const rotX = -deltaY * intensity;
             const rotY = deltaX * intensity;
             el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(6px)`;
           } else {
             el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
           }
+        });
+      });
+
+      // 5. Magnetic UI Elements
+      const magnets = document.querySelectorAll('.btn-primary, .btn-secondary, .contact-pill');
+      magnets.forEach(magnet => {
+        magnet.addEventListener('mousemove', function(e) {
+          const position = magnet.getBoundingClientRect();
+          const x = e.clientX - position.left - position.width / 2;
+          const y = e.clientY - position.top - position.height / 2;
+          magnet.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+
+        magnet.addEventListener('mouseleave', function() {
+          magnet.style.transform = 'translate(0px, 0px)';
         });
       });
     </script>
@@ -287,6 +292,30 @@ import Footer from '../components/Footer.astro';
     pointer-events: none;
   }
 
+  /* Analog Scanlines Effect overlay */
+  .hero-portrait-layer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      to bottom,
+      rgba(255,255,255,0),
+      rgba(255,255,255,0) 50%,
+      rgba(0,0,0,0.1) 50%,
+      rgba(0,0,0,0.1)
+    );
+    background-size: 100% 4px;
+    opacity: 0;
+    mix-blend-mode: overlay;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  .unified-hero:hover .hero-portrait-layer::before {
+    opacity: 1;
+  }
+
   .portrait-canvas {
     width: 100%;
     height: 100%;
@@ -295,6 +324,13 @@ import Footer from '../components/Footer.astro';
     filter: contrast(1.04) brightness(0.92);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%, black 100%);
     mask-image: linear-gradient(to right, transparent 0%, black 35%, black 100%);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+  }
+
+  /* Phosphor/Analog push on hover */
+  .unified-hero:hover .portrait-canvas {
+    transform: scale(1.02);
+    filter: contrast(1.1) brightness(0.9) saturate(0.85); 
   }
 
   .status-indicator {
