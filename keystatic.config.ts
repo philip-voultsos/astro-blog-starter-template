@@ -4,8 +4,8 @@ export default config({
   storage: {
     kind: 'github',
     repo: {
-      owner: 'YOUR_GITHUB_USERNAME',
-      name: 'YOUR_REPO_NAME',
+      owner: 'philip-voultsos',
+      name: 'astro-blog-starter-template',
     },
   },
   collections: {
