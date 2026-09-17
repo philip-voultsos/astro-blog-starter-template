@@ -13,24 +13,20 @@ import Footer from '../components/Footer.astro';
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- Ambient Glow -->
     <div id="global-glow"></div>
 
-    <!-- Inertial Viewport -->
     <div id="scroll-container">
       <Header/>
-      <main class="about-main">
+      <main class="page-main">
         
-        <!-- Page Header -->
         <header class="page-header fade-in delay-1">
           <h1 class="page-title">Background</h1>
           <p class="page-subtitle">Academic focus, institutional interests, and personal statement.</p>
         </header>
 
-        <!-- Two-Column Editorial Grid -->
         <div class="about-grid">
           
-          <!-- Left Column: The Long-form Statement Canvas -->
+          <!-- Heavy, anchored tilt for the large text canvas -->
           <article class="bento-card statement-card fade-in delay-2 tilt-element" data-tilt="1.2">
             <div class="statement-content">
               <span class="cinzel-quote">“The architecture of institutions dictates the trajectory of economies.”</span>
@@ -50,11 +46,9 @@ import Footer from '../components/Footer.astro';
             </div>
           </article>
 
-          <!-- Right Column: Sidebar Breakdown -->
           <aside class="about-sidebar fade-in delay-3">
             
-            <!-- Sidebar Card 1: Academic Focus -->
-            <div class="spotlight-card sidebar-card tilt-element" data-tilt="4">
+            <div class="spotlight-card sidebar-card tilt-element">
               <div class="spotlight-glow"></div>
               <div class="card-content">
                 <h3 class="sidebar-title">A-Level Coursework</h3>
@@ -67,8 +61,7 @@ import Footer from '../components/Footer.astro';
               </div>
             </div>
 
-            <!-- Sidebar Card 2: Leadership -->
-            <div class="spotlight-card sidebar-card tilt-element" data-tilt="4">
+            <div class="spotlight-card sidebar-card tilt-element">
               <div class="spotlight-glow"></div>
               <div class="card-content">
                 <h3 class="sidebar-title">Leadership</h3>
@@ -78,8 +71,7 @@ import Footer from '../components/Footer.astro';
               </div>
             </div>
 
-            <!-- Sidebar Card 3: Personal Interests -->
-            <div class="spotlight-card sidebar-card tilt-element" data-tilt="4">
+            <div class="spotlight-card sidebar-card tilt-element">
               <div class="spotlight-glow"></div>
               <div class="card-content">
                 <h3 class="sidebar-title">Off-Screen</h3>
@@ -95,9 +87,8 @@ import Footer from '../components/Footer.astro';
       <Footer/>
     </div>
 
-    <!-- Physics & Tilt Engine (Replicated from Homepage) -->
+    <!-- Unified Physics Engine -->
     <script>
-      // 1. Intersection Observer Fade-Ins
       const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -109,11 +100,9 @@ import Footer from '../components/Footer.astro';
       }, observerOptions);
       document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-      // 2. Inertial Scroll Dynamics
       let currentY = window.scrollY;
       let targetY = window.scrollY;
       const ease = 0.085;
-
       const scrollContainer = document.getElementById('scroll-container');
       const glow = document.getElementById('global-glow');
 
@@ -125,14 +114,11 @@ import Footer from '../components/Footer.astro';
       window.addEventListener('resize', syncHeight);
       syncHeight();
 
-      window.addEventListener('scroll', () => {
-        targetY = window.scrollY;
-      }, { passive: true });
+      window.addEventListener('scroll', () => { targetY = window.scrollY; }, { passive: true });
 
       function physicsLoop() {
         currentY += (targetY - currentY) * ease;
         const roundedY = Math.round(currentY * 100) / 100;
-        
         if (scrollContainer && window.innerWidth > 768) {
           scrollContainer.style.transform = `translate3d(0, -${roundedY}px, 0)`;
         } else if (scrollContainer) {
@@ -142,7 +128,6 @@ import Footer from '../components/Footer.astro';
       }
       requestAnimationFrame(physicsLoop);
 
-      // 3. Cursor Follower & Variable Tilt Physics
       const tiltElements = document.querySelectorAll('.tilt-element');
       const cards = document.querySelectorAll('.spotlight-card');
 
@@ -150,37 +135,37 @@ import Footer from '../components/Footer.astro';
         if (glow) {
           glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
         }
-
         cards.forEach(card => {
           const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          card.style.setProperty('--mouse-x', `${x}px`);
-          card.style.setProperty('--mouse-y', `${y}px`);
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
         });
-
         tiltElements.forEach(el => {
           const rect = el.getBoundingClientRect();
-          const isHovered = (
-            e.clientX >= rect.left &&
-            e.clientX <= rect.right &&
-            e.clientY >= rect.top &&
-            e.clientY <= rect.bottom
-          );
-
+          const isHovered = (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom);
           if (isHovered) {
             const centerX = rect.left + rect.width / 2;
             const centerY = rect.top + rect.height / 2;
             const deltaX = (e.clientX - centerX) / (rect.width / 2);
             const deltaY = (e.clientY - centerY) / (rect.height / 2);
-
             const intensity = el.dataset.tilt ? parseFloat(el.dataset.tilt) : 6;
-            const rotX = -deltaY * intensity;
-            const rotY = deltaX * intensity;
-            el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(6px)`;
+            el.style.transform = `perspective(1000px) rotateX(${-deltaY * intensity}deg) rotateY(${deltaX * intensity}deg) translateZ(6px)`;
           } else {
             el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
           }
+        });
+      });
+
+      const magnets = document.querySelectorAll('.btn-primary, .btn-secondary, .contact-pill');
+      magnets.forEach(magnet => {
+        magnet.addEventListener('mousemove', function(e) {
+          const position = magnet.getBoundingClientRect();
+          const x = e.clientX - position.left - position.width / 2;
+          const y = e.clientY - position.top - position.height / 2;
+          magnet.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        magnet.addEventListener('mouseleave', function() {
+          magnet.style.transform = 'translate(0px, 0px)';
         });
       });
     </script>
@@ -188,174 +173,38 @@ import Footer from '../components/Footer.astro';
 </html>
 
 <style>
-  /* Base Layout Constraints */
-  .about-main {
-    padding-top: 5rem;
-  }
-
-  .page-header {
-    margin-bottom: 3.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--glass-border);
-  }
-
-  .page-title {
-    font-size: clamp(3rem, 6vw, 4.5rem);
-    margin-bottom: 0.5rem;
-  }
-
-  .page-subtitle {
-    font-size: 1.25rem;
-    color: var(--primary-bright);
-    font-weight: 500;
-  }
-
-  /* Structural Grid */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1.8fr 1fr;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  /* Shared Physics Classes */
-  .tilt-element {
-    transform-style: preserve-3d;
-    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
-    will-change: transform;
-  }
-
-  .bento-card {
-    background: var(--glass-surface);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 28px;
-    box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Left Column: Statement Styling */
-  .statement-card {
-    padding: 3.5rem;
-  }
-
-  .cinzel-quote {
-    display: block;
-    font-family: 'Cinzel', serif;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--primary-bright);
-    line-height: 1.4;
-    margin-bottom: 3rem;
-    padding-left: 1.5rem;
-    border-left: 3px solid var(--primary);
-  }
-
-  .statement-content h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .prose p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-main);
-    margin-bottom: 1.5rem;
-  }
-
-  .prose p:last-child {
-    margin-bottom: 0;
-  }
-
-  .prose em {
-    color: var(--text-dim);
-    font-style: normal;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-right: 0.5rem;
-  }
-
-  /* Right Column: Sidebar Breakdown */
-  .about-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    position: sticky;
-    top: 2rem;
-  }
-
-  .sidebar-card {
-    border-radius: 20px;
-    padding: 2rem;
-    background: var(--glass-surface);
-    border: 1px solid var(--glass-border);
-  }
-
-  .spotlight-glow {
-    pointer-events: none;
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: radial-gradient(
-      500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
-      rgba(73, 125, 123, 0.22),
-      transparent 75%
-    );
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-  }
+  #scroll-container { position: fixed; top: 0; left: 0; width: 100%; will-change: transform; pointer-events: auto; }
+  .page-main { padding-top: 5rem; }
+  .page-header { margin-bottom: 3.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--glass-border); }
+  .page-title { font-size: clamp(3rem, 6vw, 4.5rem); margin-bottom: 0.5rem; }
+  .page-subtitle { font-size: 1.25rem; color: var(--primary-bright); font-weight: 500; }
+  
+  .about-grid { display: grid; grid-template-columns: 1.8fr 1fr; gap: 2rem; align-items: start; }
+  .tilt-element { transform-style: preserve-3d; transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease; will-change: transform; }
+  .bento-card { background: var(--glass-surface); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 28px; box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.5); }
+  
+  .statement-card { padding: 3.5rem; }
+  .cinzel-quote { display: block; font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 600; color: var(--primary-bright); line-height: 1.4; margin-bottom: 3rem; padding-left: 1.5rem; border-left: 3px solid var(--primary); }
+  .statement-content h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+  .prose p { font-size: 1.1rem; line-height: 1.8; color: var(--text-main); margin-bottom: 1.5rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose em { color: var(--text-dim); font-style: normal; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-right: 0.5rem; }
+  
+  .about-sidebar { display: flex; flex-direction: column; gap: 1.5rem; position: sticky; top: 2rem; }
+  .sidebar-card { border-radius: 20px; padding: 2rem; background: var(--glass-surface); border: 1px solid var(--glass-border); position: relative; overflow: hidden; }
+  .spotlight-glow { pointer-events: none; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(73, 125, 123, 0.22), transparent 75%); opacity: 0; transition: opacity 0.3s ease; z-index: 1; }
   .spotlight-card:hover .spotlight-glow { opacity: 1; }
-
-  .card-content {
-    position: relative;
-    z-index: 2;
-  }
-
-  .sidebar-title {
-    font-size: 1.25rem;
-    color: var(--text-heading);
-    margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 0.75rem;
-  }
-
-  .sidebar-text {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-  }
-
-  .tag-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-  }
-
-  .tag {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--primary-bright);
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 0.35rem 0.85rem;
-    border-radius: 8px;
-  }
-
-  /* Responsive Adjustments */
+  .card-content { position: relative; z-index: 2; }
+  .sidebar-title { font-size: 1.25rem; color: var(--text-heading); margin-bottom: 1rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.75rem; }
+  .sidebar-text { font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); }
+  
+  .tag-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.65rem; }
+  .tag { font-size: 0.85rem; font-weight: 600; color: var(--primary-bright); background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.35rem 0.85rem; border-radius: 8px; }
+  
   @media (max-width: 900px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .statement-card {
-      padding: 2.5rem 1.5rem;
-    }
-    
-    .about-sidebar {
-      position: static;
-    }
+    #scroll-container { position: static; transform: none !important; }
+    .about-grid { grid-template-columns: 1fr; }
+    .statement-card { padding: 2.5rem 1.5rem; }
+    .about-sidebar { position: static; }
   }
 </style>
