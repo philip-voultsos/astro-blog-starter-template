@@ -8,11 +8,12 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://example.com",
-	integrations: [mdx(), sitemap(), react(), keystatic()],
-	adapter: cloudflare({
-		platformProxy: {
-			enabled: true,
-		},
-	}),
+    site: "https://example.com",
+    output: "hybrid",
+    integrations: [mdx(), sitemap(), react(), keystatic()],
+    adapter: cloudflare({
+        platformProxy: {
+            enabled: true,
+        },
+    }),
 });
