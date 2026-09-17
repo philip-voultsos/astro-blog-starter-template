@@ -11,7 +11,6 @@ import Footer from '../components/Footer.astro';
       title="404 — Page Not Found | Philip Voultsos" 
       description="Oops... Something went wrong and we can't find what you were looking for." 
     />
-    <!-- Importing a classical, traditional display serif to clash against DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&display=swap" rel="stylesheet">
@@ -20,17 +19,15 @@ import Footer from '../components/Footer.astro';
     <Header />
     <main class="error-wrapper">
       <div class="error-card">
-        <!-- Giant classical serif 404 -->
         <span class="error-numeral">404</span>
-        
         <h1 class="error-title">Oops...</h1>
-        
         <p class="error-message">
           Something went wrong and we can’t find what you were looking for.
         </p>
 
         <div class="action-container">
-          <a href="/" class="btn back-home-btn">
+          <!-- Fixed class: applied btn-primary from global.css -->
+          <a href="/" class="btn-primary back-home-btn">
             &larr; Return to Homepage
           </a>
         </div>
@@ -55,7 +52,6 @@ import Footer from '../components/Footer.astro';
     margin: 0 auto;
   }
 
-  /* Traditional, classical serif numeral contrasting with DM Sans */
   .error-numeral {
     display: block;
     font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
@@ -91,8 +87,6 @@ import Footer from '../components/Footer.astro';
 
   .back-home-btn {
     padding: 0.85rem 1.75rem;
-    font-size: 1rem;
-    letter-spacing: -0.01em;
   }
 
   @media (max-width: 640px) {
