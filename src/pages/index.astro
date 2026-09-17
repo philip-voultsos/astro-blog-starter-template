@@ -8,7 +8,6 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
   <head>
     <BaseHead description="Personal portfolio, academic profile, and writings." title="Philip Voultsos"/>
-    <!-- Upgrade 2: Import Cinzel for Typographic Tension -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&display=swap" rel="stylesheet">
@@ -20,7 +19,8 @@ import Footer from '../components/Footer.astro';
       <Header/>
       <main>
         
-        <section class="unified-hero bento-card fade-in delay-1 tilt-element">
+        <!-- Adjusted data-tilt to 1.5 to ground the large hero card -->
+        <section class="unified-hero bento-card fade-in delay-1 tilt-element" data-tilt="1.5">
           
           <div class="hero-portrait-layer">
             <img 
@@ -35,7 +35,6 @@ import Footer from '../components/Footer.astro';
             <div class="status-indicator">
               <span class="status-pulse-ring"></span>
               <span class="status-dot"></span>
-              <!-- Upgrade 3: Live Temporal Status target -->
               <span>Sixth-Form Scholar &bull; <span id="athens-time">Athens</span></span>
             </div>
 
@@ -66,7 +65,6 @@ import Footer from '../components/Footer.astro';
               <div class="spotlight-glow"></div>
               <div class="card-content">
                 <div class="card-header">
-                  <!-- The .card-step class will now render in the classical serif -->
                   <span class="card-step">01</span>
                   <span class="card-pill">Background</span>
                 </div>
@@ -124,7 +122,7 @@ import Footer from '../components/Footer.astro';
 
     <!-- Physics, Animation & Temporal Engine -->
     <script>
-      // 1. Live Temporal Status (Athens Time)
+      // 1. Live Temporal Status
       function updateTime() {
         const timeTarget = document.getElementById('athens-time');
         if (!timeTarget) return;
@@ -139,7 +137,7 @@ import Footer from '../components/Footer.astro';
         timeTarget.innerHTML = `Athens &mdash; ${timeString}`;
       }
       setInterval(updateTime, 1000);
-      updateTime(); // Run immediately
+      updateTime(); 
 
       // 2. Intersection Observer Fade-Ins
       const observerOptions = {
@@ -151,7 +149,7 @@ import Footer from '../components/Footer.astro';
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('in-view');
-            observer.unobserve(entry.target); // Stop observing once it's visible
+            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
@@ -191,7 +189,7 @@ import Footer from '../components/Footer.astro';
       }
       requestAnimationFrame(physicsLoop);
 
-      // 4. Cursor Follower & 3D Interactive Spring Tilt
+      // 4. Cursor Follower & Variable Tilt Physics
       const tiltElements = document.querySelectorAll('.tilt-element');
       const cards = document.querySelectorAll('.spotlight-card');
 
@@ -223,8 +221,11 @@ import Footer from '../components/Footer.astro';
             const deltaX = (e.clientX - centerX) / (rect.width / 2);
             const deltaY = (e.clientY - centerY) / (rect.height / 2);
 
-            const rotX = -deltaY * 6;
-            const rotY = deltaX * 6;
+            // Fetch custom tilt multiplier, fallback to 6 for standard cards
+            const intensity = el.dataset.tilt ? parseFloat(el.dataset.tilt) : 6;
+
+            const rotX = -deltaY * intensity;
+            const rotY = deltaX * intensity;
             el.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(6px)`;
           } else {
             el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
@@ -400,7 +401,6 @@ import Footer from '../components/Footer.astro';
     margin-bottom: 1.25rem;
   }
   
-  /* Upgrade 2: Apply Cinzel to numerals */
   .card-step {
     font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
     font-size: 1.15rem;
