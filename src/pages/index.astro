@@ -8,20 +8,20 @@ import Footer from '../components/Footer.astro';
 <html lang="en">
   <head>
     <BaseHead description="Personal portfolio, academic profile, and writings." title="Philip Voultsos"/>
+    <!-- Upgrade 2: Import Cinzel for Typographic Tension -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&display=swap" rel="stylesheet">
   </head>
   <body>
-    <!-- Hardware-Accelerated Ambient Glow -->
     <div id="global-glow"></div>
 
-    <!-- Virtual Viewport for Inertial Momentum -->
     <div id="scroll-container">
       <Header/>
       <main>
         
-        <!-- Unified Hero: Seamless Portrait Integration -->
         <section class="unified-hero bento-card fade-in delay-1 tilt-element">
           
-          <!-- Absolute positioned portrait with alpha gradient mask -->
           <div class="hero-portrait-layer">
             <img 
               src="/profile.png" 
@@ -31,12 +31,12 @@ import Footer from '../components/Footer.astro';
             />
           </div>
 
-          <!-- Foreground text layered over the faded edge of the portrait -->
           <div class="hero-content-layer">
             <div class="status-indicator">
               <span class="status-pulse-ring"></span>
               <span class="status-dot"></span>
-              <span>Sixth-Form Scholar &bull; Athens</span>
+              <!-- Upgrade 3: Live Temporal Status target -->
+              <span>Sixth-Form Scholar &bull; <span id="athens-time">Athens</span></span>
             </div>
 
             <h1 class="hero-title">Philip Voultsos</h1>
@@ -55,7 +55,6 @@ import Footer from '../components/Footer.astro';
           </div>
         </section>
 
-        <!-- Directory Section with 3D Physics Cards -->
         <section class="directory-section fade-in delay-2">
           <div class="section-title-wrap">
             <h2>Site Directory</h2>
@@ -67,6 +66,7 @@ import Footer from '../components/Footer.astro';
               <div class="spotlight-glow"></div>
               <div class="card-content">
                 <div class="card-header">
+                  <!-- The .card-step class will now render in the classical serif -->
                   <span class="card-step">01</span>
                   <span class="card-pill">Background</span>
                 </div>
@@ -122,8 +122,42 @@ import Footer from '../components/Footer.astro';
       <Footer/>
     </div>
 
-    <!-- Physics & Tilt Engine -->
+    <!-- Physics, Animation & Temporal Engine -->
     <script>
+      // 1. Live Temporal Status (Athens Time)
+      function updateTime() {
+        const timeTarget = document.getElementById('athens-time');
+        if (!timeTarget) return;
+        
+        const options = { 
+          timeZone: 'Europe/Athens', 
+          hour: 'numeric', 
+          minute: '2-digit',
+          hour12: true 
+        };
+        const timeString = new Intl.DateTimeFormat('en-US', options).format(new Date());
+        timeTarget.innerHTML = `Athens &mdash; ${timeString}`;
+      }
+      setInterval(updateTime, 1000);
+      updateTime(); // Run immediately
+
+      // 2. Intersection Observer Fade-Ins
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+      };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target); // Stop observing once it's visible
+          }
+        });
+      }, observerOptions);
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+      // 3. Inertial Scroll Dynamics
       let currentY = window.scrollY;
       let targetY = window.scrollY;
       const ease = 0.085;
@@ -157,6 +191,7 @@ import Footer from '../components/Footer.astro';
       }
       requestAnimationFrame(physicsLoop);
 
+      // 4. Cursor Follower & 3D Interactive Spring Tilt
       const tiltElements = document.querySelectorAll('.tilt-element');
       const cards = document.querySelectorAll('.spotlight-card');
 
@@ -225,7 +260,6 @@ import Footer from '../components/Footer.astro';
     box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.5);
   }
 
-  /* Unified Hero Overhaul */
   .unified-hero {
     position: relative;
     display: flex;
@@ -242,7 +276,6 @@ import Footer from '../components/Footer.astro';
     max-width: 60%;
   }
 
-  /* Positioned on the right side of the unified card */
   .hero-portrait-layer {
     position: absolute;
     top: 0;
@@ -259,7 +292,6 @@ import Footer from '../components/Footer.astro';
     object-fit: cover;
     object-position: center 20%;
     filter: contrast(1.04) brightness(0.92);
-    /* This alpha mask fades the left edge of the image into transparent space */
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 35%, black 100%);
     mask-image: linear-gradient(to right, transparent 0%, black 35%, black 100%);
   }
@@ -301,9 +333,7 @@ import Footer from '../components/Footer.astro';
     100% { transform: scale(3.2); opacity: 0; }
   }
 
-  .hero-title {
-    margin-bottom: 1.15rem;
-  }
+  .hero-title { margin-bottom: 1.15rem; }
   .hero-body {
     font-size: 1.15rem;
     line-height: 1.65;
@@ -311,10 +341,7 @@ import Footer from '../components/Footer.astro';
     color: var(--text-muted);
   }
 
-  /* Directory & Spotlight Cards */
-  .directory-section {
-    margin-bottom: 2rem;
-  }
+  .directory-section { margin-bottom: 2rem; }
   .section-title-wrap {
     display: flex;
     justify-content: space-between;
@@ -346,10 +373,7 @@ import Footer from '../components/Footer.astro';
   .spotlight-glow {
     pointer-events: none;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0; left: 0; right: 0; bottom: 0;
     background: radial-gradient(
       500px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
       rgba(73, 125, 123, 0.22),
@@ -359,10 +383,7 @@ import Footer from '../components/Footer.astro';
     transition: opacity 0.3s ease;
     z-index: 1;
   }
-
-  .spotlight-card:hover .spotlight-glow {
-    opacity: 1;
-  }
+  .spotlight-card:hover .spotlight-glow { opacity: 1; }
 
   .card-content {
     position: relative;
@@ -378,12 +399,16 @@ import Footer from '../components/Footer.astro';
     align-items: center;
     margin-bottom: 1.25rem;
   }
+  
+  /* Upgrade 2: Apply Cinzel to numerals */
   .card-step {
-    font-size: 0.85rem;
-    font-weight: 800;
+    font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
+    font-size: 1.15rem;
+    font-weight: 900;
     color: var(--primary-bright);
     letter-spacing: 0.08em;
   }
+  
   .card-pill {
     font-size: 0.8rem;
     font-weight: 600;
@@ -395,14 +420,13 @@ import Footer from '../components/Footer.astro';
   }
 
   .spotlight-card h3 {
-    color: #ffffff;
+    color: var(--text-heading);
     font-size: 1.45rem;
     margin-bottom: 0.65rem;
     transition: color 0.2s ease;
   }
-  .spotlight-card:hover h3 {
-    color: var(--primary-bright);
-  }
+  .spotlight-card:hover h3 { color: var(--primary-bright); }
+  
   .spotlight-card p {
     font-size: 1rem;
     line-height: 1.6;
@@ -419,14 +443,9 @@ import Footer from '../components/Footer.astro';
     color: var(--primary-bright);
     margin-top: auto;
   }
-  .arrow {
-    transition: transform 0.25s var(--spring-bounce);
-  }
-  .spotlight-card:hover .arrow {
-    transform: translateX(6px);
-  }
+  .arrow { transition: transform 0.25s var(--spring-bounce); }
+  .spotlight-card:hover .arrow { transform: translateX(6px); }
 
-  /* Responsive Fallbacks */
   @media (max-width: 820px) {
     #scroll-container {
       position: static;
@@ -441,7 +460,7 @@ import Footer from '../components/Footer.astro';
     
     .hero-content-layer {
       max-width: 100%;
-      margin-top: 240px; /* Leave space for portrait at the top */
+      margin-top: 240px;
     }
     
     .hero-portrait-layer {
@@ -452,7 +471,6 @@ import Footer from '../components/Footer.astro';
     
     .portrait-canvas {
       object-position: center 10%;
-      /* Adjust gradient to fade vertically on mobile screens */
       -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
       mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
     }
