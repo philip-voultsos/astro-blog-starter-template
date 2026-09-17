@@ -1,0 +1,241 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead description="Download or view my Curriculum Vitae." title="CV | Philip Voultsos"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="global-glow"></div>
+
+    <div id="scroll-container">
+      <Header/>
+      <main class="gateway-main">
+        
+        <div class="gateway-wrapper fade-in delay-1">
+          <div class="spotlight-card cv-card tilt-element" data-tilt="2">
+            <div class="spotlight-glow"></div>
+            <div class="card-content">
+              
+              <div class="doc-icon">
+                <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+              </div>
+
+              <h1 class="gateway-title">Curriculum Vitae</h1>
+              <p class="gateway-desc">
+                Academic qualifications, institutional leadership, and extracurricular achievements. Maintained as a portable PDF document for accurate formatting.
+              </p>
+
+              <div class="btn-group centered-actions">
+                <!-- Points to the PDF in your public folder. target="_blank" opens it in a new tab -->
+                <a href="/Philip_Voultsos_CV.pdf" target="_blank" class="btn-primary">
+                  <span>Open PDF</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                
+                <!-- The 'download' attribute forces the browser to download the file instead of opening it -->
+                <a href="/Philip_Voultsos_CV.pdf" download class="btn-secondary">
+                  Download File
+                </a>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+      </main>
+      <Footer/>
+    </div>
+
+    <!-- Unified Physics Engine -->
+    <script>
+      const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+      let currentY = window.scrollY;
+      let targetY = window.scrollY;
+      const ease = 0.085;
+      const scrollContainer = document.getElementById('scroll-container');
+      const glow = document.getElementById('global-glow');
+
+      function syncHeight() {
+        if (scrollContainer) {
+          document.body.style.height = `${scrollContainer.getBoundingClientRect().height}px`;
+        }
+      }
+      window.addEventListener('resize', syncHeight);
+      syncHeight();
+
+      window.addEventListener('scroll', () => { targetY = window.scrollY; }, { passive: true });
+
+      function physicsLoop() {
+        currentY += (targetY - currentY) * ease;
+        const roundedY = Math.round(currentY * 100) / 100;
+        if (scrollContainer && window.innerWidth > 768) {
+          scrollContainer.style.transform = `translate3d(0, -${roundedY}px, 0)`;
+        } else if (scrollContainer) {
+          scrollContainer.style.transform = 'none';
+        }
+        requestAnimationFrame(physicsLoop);
+      }
+      requestAnimationFrame(physicsLoop);
+
+      const tiltElements = document.querySelectorAll('.tilt-element');
+      const cards = document.querySelectorAll('.spotlight-card');
+
+      window.addEventListener('mousemove', (e) => {
+        if (glow) {
+          glow.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
+        }
+        cards.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+          card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        });
+        tiltElements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const isHovered = (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom);
+          if (isHovered) {
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            const deltaX = (e.clientX - centerX) / (rect.width / 2);
+            const deltaY = (e.clientY - centerY) / (rect.height / 2);
+            const intensity = el.dataset.tilt ? parseFloat(el.dataset.tilt) : 6;
+            el.style.transform = `perspective(1000px) rotateX(${-deltaY * intensity}deg) rotateY(${deltaX * intensity}deg) translateZ(6px)`;
+          } else {
+            el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+          }
+        });
+      });
+
+      const magnets = document.querySelectorAll('.btn-primary, .btn-secondary, .contact-pill');
+      magnets.forEach(magnet => {
+        magnet.addEventListener('mousemove', function(e) {
+          const position = magnet.getBoundingClientRect();
+          const x = e.clientX - position.left - position.width / 2;
+          const y = e.clientY - position.top - position.height / 2;
+          magnet.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        magnet.addEventListener('mouseleave', function() {
+          magnet.style.transform = 'translate(0px, 0px)';
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  #scroll-container { position: fixed; top: 0; left: 0; width: 100%; will-change: transform; pointer-events: auto; }
+  
+  .gateway-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding-top: 2rem;
+  }
+
+  .gateway-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .tilt-element { transform-style: preserve-3d; transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease; will-change: transform; }
+  
+  .spotlight-card { 
+    position: relative; 
+    background: var(--glass-surface); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px); 
+    border: 1px solid var(--glass-border); 
+    border-radius: 28px; 
+    padding: 3.5rem 3rem; 
+    text-align: center;
+    overflow: hidden; 
+    box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6); 
+  }
+
+  .spotlight-glow { 
+    pointer-events: none; 
+    position: absolute; 
+    top: 0; left: 0; right: 0; bottom: 0; 
+    background: radial-gradient(600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px), rgba(73, 125, 123, 0.18), transparent 75%); 
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+    z-index: 1; 
+  }
+  .spotlight-card:hover .spotlight-glow { opacity: 1; }
+
+  .card-content { 
+    position: relative; 
+    z-index: 2; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+  }
+
+  .doc-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(73, 125, 123, 0.1);
+    color: var(--primary-bright);
+    border: 1px solid rgba(73, 125, 123, 0.25);
+    margin-bottom: 2rem;
+    box-shadow: 0 0 20px var(--glow-sage);
+  }
+
+  .gateway-title { 
+    font-size: 2.2rem; 
+    margin-bottom: 1rem; 
+    color: var(--text-heading);
+  }
+  
+  .gateway-desc { 
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    color: var(--text-muted); 
+    margin-bottom: 2.5rem; 
+    max-width: 480px;
+  }
+
+  .centered-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  @media (max-width: 640px) {
+    #scroll-container { position: static; transform: none !important; }
+    .gateway-main { min-height: 60vh; padding-top: 1rem; }
+    .spotlight-card { padding: 2.5rem 1.5rem; }
+    .gateway-title { font-size: 1.8rem; }
+    .centered-actions { flex-direction: column; }
+    .btn-primary, .btn-secondary { width: 100%; }
+  }
+</style>
