@@ -1,105 +1,119 @@
 ---
+// Header.astro
+const pathname = new URL(Astro.request.url).pathname;
+const isHome = pathname === '/';
 ---
 
-<header class="header-root">
-  <div class="header-inner">
-    <a href="/" class="brand-link">
-      <span class="brand-name">Philip Voultsos</span>
+<header class="site-header">
+  <nav class="nav-container">
+    <a href="/" class="nav-logo">
+      <span class="logo-symbol">PV</span>
+      <span class="logo-text">Philip Voultsos</span>
     </a>
-    <nav class="nav-cluster">
-      <a href="/" class="nav-item">Home</a>
-      <a href="/about" class="nav-item">About</a>
-      <a href="/cv" class="nav-item">CV</a>
-      <a href="/blog" class="nav-item">Writing</a>
-      <a href="/contact" class="nav-item contact-pill">Contact</a>
-    </nav>
-  </div>
+
+    <div class="nav-links">
+      <a href="/" class={isHome ? 'active' : ''}>Home</a>
+      <a href="/blog" class={pathname.startsWith('/blog') ? 'active' : ''}>Archive</a>
+      <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" class="external-cv">
+        <span>CV</span>
+        <svg class="external-icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+      </a>
+    </div>
+  </nav>
 </header>
 
 <style>
-  .header-root {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(9, 13, 14, 0.75);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--glass-border);
+  .site-header {
+    width: 100%;
+    margin-bottom: 3rem;
+    padding-top: 1.5rem;
   }
-  
-  .header-inner {
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 1.15rem 1.5rem;
+
+  .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
-  }
-  
-  .brand-link {
-    text-decoration: none;
-  }
-  
-  .brand-name {
-    font-family: 'Cinzel', Georgia, 'Times New Roman', serif;
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: var(--text-heading);
-    letter-spacing: 0.02em;
-    transition: color 0.2s ease;
-  }
-  
-  .brand-link:hover .brand-name {
-    color: var(--primary-bright);
-  }
-  
-  .nav-cluster {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-  }
-  
-  .nav-item {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.15s ease;
-  }
-  
-  .nav-item:hover {
-    color: var(--text-heading);
-  }
-  
-  .contact-pill {
-    background: rgba(73, 125, 123, 0.12);
-    color: var(--primary-bright);
-    padding: 0.4rem 1.1rem;
+    background: var(--glass-surface);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
     border-radius: 9999px;
-    font-weight: 700;
-    border: 1px solid rgba(73, 125, 123, 0.3);
-    /* Hooked into the global spring physics */
-    transition: transform 0.3s var(--spring-bounce), background 0.2s ease, color 0.2s ease, box-shadow 0.3s ease;
-    will-change: transform;
-  }
-  
-  .contact-pill:hover {
-    background: rgba(73, 125, 123, 0.25);
-    color: var(--text-heading);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px -2px rgba(73, 125, 123, 0.25);
+    padding: 0.75rem 1.75rem;
+    box-shadow: 0 8px 32px -4px rgba(0, 0, 0, 0.4);
   }
 
-  @media (max-width: 600px) {
-    .header-inner {
-      flex-direction: column;
-      gap: 0.85rem;
-      padding: 1rem 1.25rem;
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-heading);
+    font-weight: 700;
+  }
+
+  .logo-symbol {
+    font-family: 'Cinzel', serif;
+    background: linear-gradient(135deg, var(--primary-bright), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.1rem;
+    font-weight: 900;
+  }
+
+  .logo-text {
+    font-size: 0.95rem;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .nav-links a:hover, .nav-links a.active {
+    color: var(--primary-bright);
+  }
+
+  .external-cv {
+    opacity: 0.9;
+  }
+
+  .external-icon {
+    opacity: 0.6;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .external-cv:hover .external-icon {
+    transform: translate(1px, -1px);
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .nav-container {
+      padding: 0.6rem 1.25rem;
+      border-radius: 20px;
     }
-    .nav-cluster {
+    .logo-text {
+      display: none; /* Keeps header compact on tight mobile screens */
+    }
+    .nav-links {
       gap: 1.25rem;
-      font-size: 0.9rem;
     }
   }
 </style>
