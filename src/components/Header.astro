@@ -13,6 +13,7 @@ const isHome = pathname === '/';
 
     <div class="nav-links">
       <a href="/" class={isHome ? 'active' : ''}>Home</a>
+      <a href="/about" class={pathname.startsWith('/about') ? 'active' : ''}>About</a>
       <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" class="external-cv">
         <span>CV</span>
         <svg class="external-icon" viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
