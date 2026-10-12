@@ -1,27 +1,51 @@
+import { gsap } from 'gsap';
+
 const nav = document.querySelector<HTMLElement>('.primary-nav');
 const pill = nav?.querySelector<HTMLElement>('.nav-liquid-pill');
 const links = nav ? Array.from(nav.querySelectorAll<HTMLAnchorElement>('.nav-link')) : [];
 
 if (nav && pill && links.length) {
   const activeLink = links.find((link) => link.classList.contains('is-active')) ?? links[0];
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let displayedLink = activeLink;
+
+  const measure = (link: HTMLAnchorElement) => {
+    const navBounds = nav.getBoundingClientRect();
+    const linkBounds = link.getBoundingClientRect();
+    return {
+      x: linkBounds.left - navBounds.left,
+      y: linkBounds.top - navBounds.top,
+      width: linkBounds.width,
+      height: linkBounds.height
+    };
+  };
+
+  const initialPosition = measure(activeLink);
+  gsap.set(pill, { ...initialPosition, opacity: 0 });
+
+  const xTo = gsap.quickTo(pill, 'x', { duration: 0.34, ease: 'power3.out', overwrite: 'auto' });
+  const yTo = gsap.quickTo(pill, 'y', { duration: 0.34, ease: 'power3.out', overwrite: 'auto' });
+  const widthTo = gsap.quickTo(pill, 'width', { duration: 0.34, ease: 'power3.out', overwrite: 'auto' });
+  const heightTo = gsap.quickTo(pill, 'height', { duration: 0.34, ease: 'power3.out', overwrite: 'auto' });
 
   const movePill = (link: HTMLAnchorElement) => {
     displayedLink = link;
-    const navBounds = nav.getBoundingClientRect();
-    const linkBounds = link.getBoundingClientRect();
+    const position = measure(link);
 
-    pill.style.left = `${linkBounds.left - navBounds.left}px`;
-    pill.style.top = `${linkBounds.top - navBounds.top}px`;
-    pill.style.width = `${linkBounds.width}px`;
-    pill.style.height = `${linkBounds.height}px`;
+    if (reduceMotion) {
+      gsap.set(pill, position);
+      return;
+    }
+
+    xTo(position.x);
+    yTo(position.y);
+    widthTo(position.width);
+    heightTo(position.height);
   };
 
-  pill.classList.add('is-initializing');
-  movePill(activeLink);
   requestAnimationFrame(() => {
-    pill.classList.remove('is-initializing');
     pill.dataset.ready = 'true';
+    gsap.to(pill, { opacity: 1, duration: 0.16, ease: 'power1.out', overwrite: 'auto' });
   });
 
   links.forEach((link) => {
