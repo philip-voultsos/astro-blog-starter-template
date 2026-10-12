@@ -20,14 +20,13 @@ Astro prints the local address after the development server starts.
 - `src/components/` — shared header, footer, and metadata
 - `src/styles/global.css` — typography, layout, responsive rules, and reduced-motion styles
 - `src/scripts/motion.ts` — GSAP button response and scroll reveals
-- `public/profile.png` — homepage portrait
 - `public/cv.pdf` — academic CV
 
 The site builds to static output and uses the Cloudflare adapter. Profile text is kept in `src/content/profile.ts` so it can be reviewed and edited without changing the page structure.
 
 ## Before deployment
 
-Confirm the canonical URL in `astro.config.mjs` and check that the CV, portrait, email address, and LinkedIn profile are current.
+Confirm the canonical URL in `astro.config.mjs` and check that the CV, email address, and LinkedIn profile are current.
 
 ```sh
 npm run build

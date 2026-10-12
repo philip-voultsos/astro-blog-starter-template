@@ -6,8 +6,7 @@ IMPORTANT: GitHub does not extract an uploaded ZIP into your repository. Extract
 
 Keep the existing .git directory if you are using a local clone. This ZIP intentionally does not contain .git or node_modules.
 
-The existing portrait and CV are preserved at:
-  public/profile.png
+The CV is preserved at:
   public/cv.pdf
 
 Build command:

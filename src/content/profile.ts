@@ -5,7 +5,6 @@ export const profile = {
   location: 'Athens, Greece',
   email: 'philip@voultsos.com',
   linkedin: 'https://www.linkedin.com/in/voultsosp/',
-  outsideSchool: 'Linux desktop environments, mechanical watch movements, and legacy media hardware.',
   research: {
     question: 'To what extent did the 2008–2024 polycrisis affect the popularity of right-wing populism in Britain?',
     summary: 'The project compares economic shocks and political developments with changes in public support during this period.'
@@ -37,14 +36,6 @@ export const profile = {
         'As a committee chair and student officer at local and international conferences, I guide debate and prepare study guides and research reports. The roles involve source-based research, structured argument, and event organisation.'
       ]
     },
-    {
-      index: '04',
-      label: 'Outside school',
-      title: 'Technical interests',
-      paragraphs: [
-        'I configure Linux desktop environments, study mechanical watch movements, and maintain legacy media hardware. I am interested in system design, mechanical function, and maintenance.'
-      ]
-    }
   ]
 } as const;
 
@@ -60,7 +51,7 @@ export const homeCopy = {
 } as const;
 
 export const backgroundCopy = {
-  metaDescription: 'Academic interests, research approach, current studies, and selected Model UN work.',
+  metaDescription: 'Academic interests, research, current studies, and selected Model UN responsibilities.',
   titleLead: 'Institutions, ideas,',
   titleEmphasis: 'and political change.',
   lede: `I am a ${profile.role} at ${profile.school} in ${profile.location}. My academic interests centre on the relationship between political institutions, economic life, and history.`,

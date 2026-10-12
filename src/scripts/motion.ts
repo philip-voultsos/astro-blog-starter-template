@@ -1,7 +1,8 @@
 import { gsap } from 'gsap';
 
-const RESPONSE_SECONDS = 0.14;
-const MAGNETIC_STRENGTH = 3.5;
+const RESPONSE_SECONDS = 0.22;
+const SCROLL_SECONDS = 0.58;
+const MAGNETIC_STRENGTH = 4.5;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
@@ -17,7 +18,7 @@ if (!prefersReducedMotion.matches) {
           x,
           y,
           duration: RESPONSE_SECONDS,
-          ease: 'elastic.out(1, 0.72)',
+          ease: 'power2.out',
           overwrite: 'auto'
         });
       };
@@ -27,7 +28,7 @@ if (!prefersReducedMotion.matches) {
           x: 0,
           y: 0,
           duration: RESPONSE_SECONDS,
-          ease: 'elastic.out(1, 0.72)',
+          ease: 'power2.out',
           overwrite: 'auto'
         });
       };
@@ -44,19 +45,31 @@ if (!prefersReducedMotion.matches) {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
-        gsap.fromTo(
-          entry.target,
-          { y: 8 },
-          {
-            y: 0,
-            duration: RESPONSE_SECONDS,
-            ease: 'power2.out',
-            clearProps: 'transform'
-          }
+        gsap.fromTo(entry.target, { y: 18, opacity: 0 }, {
+          y: 0,
+          opacity: 1,
+          duration: SCROLL_SECONDS,
+          ease: 'power3.out',
+          clearProps: 'opacity,transform'
+        });
+
+        const staggerItems = entry.target.querySelectorAll<HTMLElement>(
+          '.focus-row, .appointment-row, .prose-section, .aside-section, .study-list li'
         );
+        if (staggerItems.length) {
+          gsap.fromTo(staggerItems, { y: 12, opacity: 0 }, {
+            y: 0,
+            opacity: 1,
+            duration: 0.48,
+            stagger: 0.075,
+            delay: 0.06,
+            ease: 'power2.out',
+            clearProps: 'opacity,transform'
+          });
+        }
         observer.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
 
     revealElements.forEach((element) => revealObserver.observe(element));
   }
