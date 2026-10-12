@@ -1,3 +1,3 @@
 export const SITE_TITLE = 'Philip Voultsos — Academic Profile';
 export const SITE_DESCRIPTION =
-  'The academic profile of Philip Voultsos, a sixth-form student interested in political theory, economics, history, and institutional governance.';
+  'Academic interests, research, and selected Model UN work by Philip Voultsos, a sixth-form student at Byron College in Athens.';

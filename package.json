@@ -1,6 +1,6 @@
 {
   "name": "philip-voultsos-academic-profile",
-  "description": "Personal academic profile and portfolio for Philip Voultsos.",
+  "description": "Academic profile, research, and Model UN work by Philip Voultsos.",
   "cloudflare": {
     "label": "Philip Voultsos — Academic Profile",
     "products": [
@@ -20,6 +20,7 @@
     "@keystatic/astro": "^5.0.0",
     "@keystatic/core": "^0.5.0",
     "astro": "5.16.9",
+    "gsap": "^3.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "typescript": "5.9.3"

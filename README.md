@@ -1,45 +1,44 @@
 # Philip Voultsos — Academic Profile
 
-A personal academic profile and portfolio built with Astro. The site is designed to introduce Philip's academic interests, selected Model UN leadership experience, current studies, and CV. It is not structured as a blog.
+An Astro site for academic interests, current research, selected Model UN work, and a downloadable CV.
 
-## Getting started
-
-This project uses Astro and is configured for static output with the Cloudflare adapter.
+## Run locally
 
 ```sh
 npm install
 npm run dev
 ```
 
-Astro's local development server will print the address to open in your browser, usually `http://localhost:4321`.
+Astro prints the local address after the development server starts.
 
 ## Project structure
 
-- `src/pages/index.astro` — the homepage and profile overview
-- `src/pages/about.astro` — academic background and interests
-- `src/pages/404.astro` — branded not-found page
-- `src/components/Header.astro` — site navigation
-- `src/components/Footer.astro` — contact links and footer
-- `src/components/BaseHead.astro` — page metadata, fonts, and global stylesheet import
-- `src/styles/global.css` — shared editorial design system, responsive layout, texture, and motion preferences
-- `src/scripts/magnetic.ts` — small spring-damped pointer interaction for key links; no animation dependency is required
-- `public/profile.png` — portrait used on the homepage
-- `public/cv.pdf` — downloadable academic CV
+- `src/content/profile.ts` — profile copy, research details, studies, and appointments
+- `src/pages/index.astro` — overview and selected work
+- `src/pages/about.astro` — academic background
+- `src/pages/404.astro` — not-found page
+- `src/components/` — shared header, footer, and metadata
+- `src/styles/global.css` — typography, layout, responsive rules, and reduced-motion styles
+- `src/scripts/motion.ts` — GSAP button response and scroll reveals
+- `public/profile.png` — homepage portrait
+- `public/cv.pdf` — academic CV
 
-The original demo blog posts, sample article layout, and sample RSS feed have been removed so the project no longer ships with placeholder blog content. The visual direction uses an editorial serif-led hierarchy, asymmetrical pacing, subtle paper grain, fine rules, and a restrained spring response on selected links. The animation is dependency-free and disabled when reduced motion is requested.
+The site builds to static output and uses the Cloudflare adapter. Profile text is kept in `src/content/profile.ts` so it can be reviewed and edited without changing the page structure.
 
-## Before deploying
+## Before deployment
 
-1. Confirm `site` in `astro.config.mjs` matches the final public domain. It is currently set to `https://voultsos.com` based on the email domain already used on the site.
-2. Check that `public/cv.pdf`, `public/profile.png`, the email address, and LinkedIn profile are current.
-3. Run `npm run build` to verify the production site.
+Confirm the canonical URL in `astro.config.mjs` and check that the CV, portrait, email address, and LinkedIn profile are current.
+
+```sh
+npm run build
+```
 
 ## Commands
 
 | Command | Action |
 | --- | --- |
 | `npm install` | Install dependencies |
-| `npm run dev` | Start the development server |
+| `npm run dev` | Start the local development server |
 | `npm run build` | Build the static site into `dist/` |
-| `npm run preview` | Preview the production build locally |
-| `npm run deploy` | Deploy using Wrangler / Cloudflare Workers |
+| `npm run preview` | Preview the production build |
+| `npm run deploy` | Deploy with Wrangler / Cloudflare Workers |
