@@ -1,0 +1,168 @@
+---
+const pathname = Astro.url.pathname;
+const isHome = pathname === '/';
+const isAbout = pathname.startsWith('/about');
+---
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="brand" aria-label="Philip Voultsos — home">
+      <span class="brand-mark" aria-hidden="true">PV</span>
+      <span class="brand-copy">
+        <span class="brand-name">Philip Voultsos</span>
+        <span class="brand-descriptor">Academic profile</span>
+      </span>
+    </a>
+
+    <nav class="primary-nav" aria-label="Primary navigation">
+      <a href="/" class={isHome ? 'nav-link is-active' : 'nav-link'} aria-current={isHome ? 'page' : undefined}>Overview</a>
+      <a href="/about" class={isAbout ? 'nav-link is-active' : 'nav-link'} aria-current={isAbout ? 'page' : undefined}>Background</a>
+      <a href="/cv.pdf" class="nav-cv" target="_blank" rel="noopener noreferrer">
+        <span>Curriculum vitae</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+          <path d="M5 15 15 5M6 5h9v9" />
+        </svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .skip-link {
+    position: absolute;
+    z-index: 100;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.75rem 1rem;
+    transform: translateY(-160%);
+    border-radius: 0.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-decoration: none;
+    transition: transform 160ms ease;
+  }
+
+  .skip-link:focus { transform: translateY(0); }
+
+  .site-header {
+    width: min(var(--site-width), calc(100% - 3rem));
+    margin: 0 auto;
+    padding: 1.4rem 0 0;
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    min-height: 4.6rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .brand-mark {
+    display: grid;
+    place-items: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-display);
+    font-size: 1.12rem;
+    letter-spacing: -0.06em;
+  }
+
+  .brand-copy { display: grid; gap: 0.12rem; }
+  .brand-name { font-size: 0.96rem; font-weight: 700; letter-spacing: -0.035em; }
+  .brand-descriptor {
+    color: var(--muted);
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .primary-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(1rem, 2.5vw, 2.25rem);
+  }
+
+  .nav-link, .nav-cv {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 180ms ease;
+  }
+
+  .nav-link { position: relative; padding: 0.55rem 0; }
+  .nav-link::after {
+    position: absolute;
+    right: 0;
+    bottom: 0.1rem;
+    left: 0;
+    height: 1px;
+    background: var(--accent);
+    content: '';
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 180ms ease;
+  }
+  .nav-link:hover, .nav-link.is-active, .nav-cv:hover { color: var(--ink); }
+  .nav-link:hover::after, .nav-link.is-active::after { transform: scaleX(1); }
+
+  .nav-cv {
+    padding: 0.72rem 0.95rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    color: var(--ink);
+  }
+  .nav-cv svg {
+    width: 0.85rem;
+    height: 0.85rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.5;
+    transition: transform 180ms ease;
+  }
+  .nav-cv:hover { border-color: var(--ink); }
+  .nav-cv:hover svg { transform: translate(2px, -2px); }
+
+  @media (max-width: 680px) {
+    .site-header { width: min(var(--site-width), calc(100% - 2rem)); padding-top: 1rem; }
+    .header-inner { align-items: flex-start; flex-direction: column; gap: 1rem; padding-bottom: 1rem; }
+    .primary-nav { width: 100%; justify-content: space-between; gap: 0.55rem; }
+    .nav-link, .nav-cv { font-size: 0.75rem; }
+    .nav-cv { padding: 0.62rem 0.75rem; }
+  }
+
+  @media (max-width: 380px) {
+    .brand-mark { width: 2.5rem; height: 2.5rem; }
+    .primary-nav { flex-wrap: wrap; justify-content: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skip-link, .nav-link, .nav-link::after, .nav-cv, .nav-cv svg { transition: none; }
+  }
+</style>
