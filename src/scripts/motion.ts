@@ -6,8 +6,6 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
 const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
 if (!prefersReducedMotion.matches) {
-  document.documentElement.classList.add('motion-ready');
-
   if (finePointer.matches) {
     document.querySelectorAll<HTMLElement>('.magnetic').forEach((element) => {
       const moveToPointer = (event: PointerEvent) => {
@@ -48,13 +46,12 @@ if (!prefersReducedMotion.matches) {
 
         gsap.fromTo(
           entry.target,
-          { autoAlpha: 0, y: 8 },
+          { y: 8 },
           {
-            autoAlpha: 1,
             y: 0,
             duration: RESPONSE_SECONDS,
             ease: 'power2.out',
-            clearProps: 'opacity,visibility,transform'
+            clearProps: 'transform'
           }
         );
         observer.unobserve(entry.target);
@@ -62,7 +59,5 @@ if (!prefersReducedMotion.matches) {
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
 
     revealElements.forEach((element) => revealObserver.observe(element));
-  } else {
-    gsap.set(revealElements, { autoAlpha: 1, clearProps: 'all' });
   }
 }
