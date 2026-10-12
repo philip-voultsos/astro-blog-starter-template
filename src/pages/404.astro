@@ -1,0 +1,32 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Page not found | Philip Voultsos"
+      description="The page you are looking for could not be found."
+    />
+  </head>
+  <body>
+    <Header />
+    <main id="main-content" class="error-wrapper">
+      <div class="error-card">
+        <span class="error-numeral" aria-hidden="true">404</span>
+        <h1 class="error-title">A wrong turn.</h1>
+        <p class="error-message">This page doesn’t seem to exist. Head back to the overview to find what you’re looking for.</p>
+        <div class="action-container">
+          <a href="/" class="action-link action-link--primary">
+            Return to overview
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M16.5 10h-12m5 5-5-5 5-5" /></svg>
+          </a>
+        </div>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

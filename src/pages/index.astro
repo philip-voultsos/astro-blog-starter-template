@@ -1,0 +1,189 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+
+    <main id="main-content" class="page-container home-main">
+      <section class="hero-section" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">Sixth-form student <span aria-hidden="true">/</span> Athens, Greece</p>
+          <h1 id="hero-title" class="hero-title">
+            <span>Ideas,</span>
+            <span>institutions,</span>
+            <em>and the world</em>
+            <span>they shape.</span>
+          </h1>
+          <p class="hero-description">
+            I’m Philip Voultsos, a student at Byron College exploring the connections between economics, political theory, and history. I’m working towards studying Philosophy, Politics and Economics (PPE), with an interest in the institutions and ideas that shape public life.
+          </p>
+          <div class="action-row hero-actions">
+            <a class="action-link action-link--primary" href="/about">
+              Explore my background
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3.5 10h12m-5-5 5 5-5 5" /></svg>
+            </a>
+            <a class="action-link action-link--secondary" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+              View academic CV
+              <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M6 5h9v9" /></svg>
+            </a>
+          </div>
+          <div class="hero-context" aria-label="Academic focus">
+            <span>Economics</span>
+            <span>Political theory</span>
+            <span>History</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <figure class="portrait-panel">
+            <div class="portrait-image-wrap">
+              <img
+                class="portrait-image"
+                src="/profile.png"
+                alt="Portrait of Philip Voultsos"
+                width="1080"
+                height="1080"
+                fetchpriority="high"
+              />
+            </div>
+            <figcaption class="portrait-caption">
+              <span>Philip Voultsos</span>
+              <span>Academic profile · 2026</span>
+            </figcaption>
+          </figure>
+          <span class="visual-index" aria-hidden="true">PV</span>
+        </div>
+      </section>
+
+      <section class="profile-rail" aria-label="Profile overview">
+        <div class="profile-rail-item">
+          <span class="profile-rail-label">01 / Direction</span>
+          <p class="profile-rail-value">Philosophy, Politics and Economics</p>
+        </div>
+        <div class="profile-rail-item">
+          <span class="profile-rail-label">02 / Practice</span>
+          <p class="profile-rail-value">Model UN, debate and student leadership</p>
+        </div>
+        <div class="profile-rail-item">
+          <span class="profile-rail-label">03 / Location</span>
+          <p class="profile-rail-value">Athens, Greece</p>
+        </div>
+      </section>
+
+      <section class="home-section interests-section" aria-labelledby="interests-title">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-kicker">01 / Areas of interest</p>
+            <h2 id="interests-title" class="section-title">Questions that cross disciplines.</h2>
+          </div>
+          <p class="section-intro">
+            I’m interested in subjects that are difficult to understand in isolation: how institutions affect economies, how ideas influence political change, and how careful argument can move a discussion forward.
+          </p>
+        </div>
+
+        <div class="interest-grid">
+          <article class="interest-item">
+            <span class="interest-number">01</span>
+            <h3 class="interest-title">Economics &amp; institutions</h3>
+            <p>How incentives, policy choices, and institutional design influence markets and the outcomes societies experience.</p>
+          </article>
+          <article class="interest-item">
+            <span class="interest-number">02</span>
+            <h3 class="interest-title">Political ideas &amp; history</h3>
+            <p>How political thought and historical pressures help explain modern governance, public debate, and changing movements.</p>
+          </article>
+          <article class="interest-item">
+            <span class="interest-number">03</span>
+            <h3 class="interest-title">Debate &amp; diplomacy</h3>
+            <p>Putting research into practice through Model UN, policy analysis, public speaking, and consensus-building.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="home-section experience-section" aria-labelledby="experience-title">
+        <div class="experience-header">
+          <div>
+            <p class="section-kicker">02 / Selected experience</p>
+            <h2 id="experience-title" class="section-title">Ideas put into practice.</h2>
+          </div>
+          <a class="text-link" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+            Full experience in my CV <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="experience-list">
+          <article class="experience-row">
+            <p class="experience-date">2025 — present</p>
+            <div>
+              <h3 class="experience-role">Secretary-General &amp; Student Head of the Organising Committee</h3>
+              <p class="experience-org">Byron College International MUN Conference</p>
+            </div>
+            <p class="experience-description">Helping lead conference planning and operations, coordinate academic materials, and serve as a link between school leadership and participants.</p>
+          </article>
+          <article class="experience-row">
+            <p class="experience-date">2025 — present</p>
+            <div>
+              <h3 class="experience-role">Student Director &amp; Instructor</h3>
+              <p class="experience-org">Model United Nations Club, Byron College</p>
+            </div>
+            <p class="experience-description">Developing weekly training and practical guides on Rules of Procedure, policy analysis, resolution drafting, public speaking, and diplomatic strategy.</p>
+          </article>
+          <article class="experience-row">
+            <p class="experience-date">2025 — present</p>
+            <div>
+              <h3 class="experience-role">Committee Chair &amp; Student Officer</h3>
+              <p class="experience-org">Local and international Model UN conferences</p>
+            </div>
+            <p class="experience-description">Chairing committees, supporting structured debate, and preparing study guides and research reports on international issues.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="academic-panel" aria-labelledby="academic-title">
+        <div>
+          <p class="section-kicker">03 / Current studies</p>
+          <h2 id="academic-title" class="academic-title">Building a wider view.</h2>
+          <p class="academic-note">My sixth-form subjects combine quantitative work with the study of economies, political systems, and the events that shape them.</p>
+        </div>
+        <div>
+          <p class="subject-label">A-Level / IAL subjects</p>
+          <ul class="subject-list" aria-label="Current subjects">
+            <li>Mathematics</li>
+            <li>Economics</li>
+            <li>History</li>
+            <li>Politics</li>
+          </ul>
+          <div class="epq-block">
+            <span class="epq-label">Extended Project Qualification</span>
+            <p class="epq-question">“To what extent did the 2008–2024 polycrisis impact the popularity of right-wing populism in Britain?”</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-cta" aria-labelledby="closing-title">
+        <div>
+          <p class="section-kicker">A closer look</p>
+          <h2 id="closing-title" class="closing-title">The detail is in the <em>full picture.</em></h2>
+        </div>
+        <div class="closing-actions">
+          <a class="action-link action-link--primary" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+            Open my CV
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M6 5h9v9" /></svg>
+          </a>
+          <a class="action-link action-link--secondary" href="mailto:philip@voultsos.com">Get in touch</a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

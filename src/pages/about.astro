@@ -1,0 +1,94 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title="Background | Philip Voultsos"
+      description="Academic direction, current studies, Model UN leadership, and interests beyond the classroom."
+    />
+  </head>
+  <body>
+    <Header />
+
+    <main id="main-content" class="page-container inner-page">
+      <header class="page-intro">
+        <p class="eyebrow">Background / 01</p>
+        <h1 class="page-title">The questions that connect <em>politics, economics,</em> and history.</h1>
+        <p class="page-lede">I’m interested in how political ideas become institutions, how institutions shape economic outcomes, and how history helps us make sense of the present.</p>
+      </header>
+
+      <div class="about-layout">
+        <article class="about-main-copy">
+          <blockquote class="pull-quote">“The architecture of institutions dictates the trajectory of economies.”</blockquote>
+
+          <h2>Academic direction</h2>
+          <p>My academic focus lies at the intersection of political theory, economics, and history. I’m particularly interested in the way institutional design affects economic outcomes, how historical events influence political movements, and how public policy responds to periods of rapid change.</p>
+          <p>At Byron College, I study Mathematics, Economics, History, and Politics. I’m working towards university study in Philosophy, Politics and Economics (PPE), a course that brings together many of the questions I find most compelling: how societies organise themselves, how resources are allocated, and how ideas shape collective decisions.</p>
+
+          <h2>Learning through debate</h2>
+          <p>Model United Nations gives me a practical way to explore these interests. Through conference organisation, club instruction, and committee chairing, I have worked on research materials, trained other students in procedure and policy analysis, and helped guide debate towards clear, workable resolutions. These experiences have strengthened my research, communication, and coordination skills.</p>
+          <p>My Extended Project Qualification examines the relationship between the 2008–2024 polycrisis and the popularity of right-wing populism in Britain. It brings together my interests in political history, economic disruption, and the forces that influence public opinion.</p>
+
+          <h2>Beyond the classroom</h2>
+          <p>Outside academic work and debate, I enjoy configuring Linux desktop environments, studying mechanical watch movements, and maintaining legacy media hardware. I’m drawn to systems that reward patience and curiosity, whether they are political, economic, or technical.</p>
+        </article>
+
+        <aside class="about-sidebar" aria-label="Profile details">
+          <section class="sidebar-block">
+            <h2>Current subjects</h2>
+            <ul class="tag-list">
+              <li>Mathematics</li>
+              <li>Economics</li>
+              <li>History</li>
+              <li>Politics</li>
+            </ul>
+          </section>
+
+          <section class="sidebar-block">
+            <h2>Leadership</h2>
+            <div class="sidebar-detail">
+              <strong>Secretary-General</strong>
+              <span>Byron College International MUN Conference</span>
+            </div>
+            <div class="sidebar-detail">
+              <strong>Student Director &amp; Instructor</strong>
+              <span>Model United Nations Club, Byron College</span>
+            </div>
+            <div class="sidebar-detail">
+              <strong>Committee Chair &amp; Student Officer</strong>
+              <span>Local and international Model UN conferences</span>
+            </div>
+          </section>
+
+          <section class="sidebar-block">
+            <h2>Research question</h2>
+            <p>To what extent did the 2008–2024 polycrisis impact the popularity of right-wing populism in Britain?</p>
+          </section>
+
+          <section class="sidebar-block">
+            <h2>Off-screen</h2>
+            <p>Linux desktop environments, mechanical watch movements, and legacy media hardware.</p>
+          </section>
+        </aside>
+      </div>
+
+      <section class="about-bottom" aria-label="Next steps">
+        <p>The CV brings together my education, conference work, leadership responsibilities, awards, and core competencies in one place.</p>
+        <div class="action-row">
+          <a class="action-link action-link--primary" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+            View academic CV
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M6 5h9v9" /></svg>
+          </a>
+          <a class="action-link action-link--secondary" href="/">Back to overview</a>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>
