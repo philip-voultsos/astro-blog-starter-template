@@ -21,11 +21,12 @@ Astro's local development server will print the address to open in your browser,
 - `src/components/Header.astro` — site navigation
 - `src/components/Footer.astro` — contact links and footer
 - `src/components/BaseHead.astro` — page metadata, fonts, and global stylesheet import
-- `src/styles/global.css` — shared design system, layout, and responsive styles
+- `src/styles/global.css` — shared editorial design system, responsive layout, texture, and motion preferences
+- `src/scripts/magnetic.ts` — small spring-damped pointer interaction for key links; no animation dependency is required
 - `public/profile.png` — portrait used on the homepage
 - `public/cv.pdf` — downloadable academic CV
 
-The original demo blog posts, sample article layout, and sample RSS feed have been removed so the project no longer ships with placeholder blog content. The MDX package remains available should you later want to build a curated research or project showcase.
+The original demo blog posts, sample article layout, and sample RSS feed have been removed so the project no longer ships with placeholder blog content. The visual direction uses an editorial serif-led hierarchy, asymmetrical pacing, subtle paper grain, fine rules, and a restrained spring response on selected links. The animation is dependency-free and disabled when reduced motion is requested.
 
 ## Before deploying
 
