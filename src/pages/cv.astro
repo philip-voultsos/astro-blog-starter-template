@@ -1,0 +1,44 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { profile } from '../content/profile';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead
+      title={`Academic CV | ${profile.name}`}
+      description={`View or download the academic CV of ${profile.name}.`}
+    />
+  </head>
+  <body>
+    <Header />
+
+    <main id="main-content" class="site-width cv-page">
+      <header class="cv-heading">
+        <p class="eyebrow"><span>Academic record</span><span aria-hidden="true">/</span><span>CV</span></p>
+        <h1 class="cv-title">Curriculum vitae</h1>
+        <p class="cv-lede">Philip Voultsos <span aria-hidden="true">·</span> {profile.school}, {profile.location}</p>
+      </header>
+
+      <section class="cv-viewer" aria-label="Academic CV document">
+        <div class="cv-paper">
+          <iframe src="/cv.pdf#view=FitH" title={`Academic CV for ${profile.name}`} loading="eager">
+            <p class="cv-fallback">Your browser cannot display the embedded document. <a href="/cv.pdf" download="Philip-Voultsos-Academic-CV.pdf">Download the CV</a>.</p>
+          </iframe>
+        </div>
+      </section>
+
+      <div class="cv-floating-actions">
+        <a class="cv-download" href="/cv.pdf" download="Philip-Voultsos-Academic-CV.pdf">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.75v10.5m-4-4 4 4 4-4M3.5 16.25v1h13v-1" /></svg>
+          <span>Download CV</span>
+        </a>
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
