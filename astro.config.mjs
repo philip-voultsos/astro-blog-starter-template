@@ -8,7 +8,8 @@ import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://example.com",
+    // Replace this with the canonical URL if the live site uses a different domain.
+    site: "https://voultsos.com",
     output: "static",
     integrations: [mdx(), sitemap(), react(), keystatic()],
     adapter: cloudflare({

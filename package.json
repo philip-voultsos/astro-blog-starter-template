@@ -1,8 +1,8 @@
 {
-  "name": "astro-blog-starter-template",
-  "description": "Build a personal website, blog, or portfolio with Astro.",
+  "name": "philip-voultsos-academic-profile",
+  "description": "Personal academic profile and portfolio for Philip Voultsos.",
   "cloudflare": {
-    "label": "Astro Framework Starter",
+    "label": "Philip Voultsos — Academic Profile",
     "products": [
       "Workers"
     ],
