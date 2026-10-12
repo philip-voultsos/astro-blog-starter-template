@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 
-const RESPONSE_SECONDS = 0.22;
+const RESPONSE_SECONDS = 0.5;
 const SCROLL_SECONDS = 0.58;
 const MAGNETIC_STRENGTH = 4.5;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -18,7 +18,7 @@ if (!prefersReducedMotion.matches) {
           x,
           y,
           duration: RESPONSE_SECONDS,
-          ease: 'power2.out',
+          ease: 'power3.out',
           overwrite: 'auto'
         });
       };
@@ -28,7 +28,7 @@ if (!prefersReducedMotion.matches) {
           x: 0,
           y: 0,
           duration: RESPONSE_SECONDS,
-          ease: 'power2.out',
+          ease: 'back.out(1.35)',
           overwrite: 'auto'
         });
       };

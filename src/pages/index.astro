@@ -17,19 +17,27 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
     <main id="main-content" class="site-width home-page">
       <section class="opening reveal" aria-labelledby="home-title">
         <div class="opening-copy">
-          <p class="eyebrow">{profile.school} <span aria-hidden="true">/</span> {profile.location}</p>
+          <p class="eyebrow campus-tag">
+            <span>{profile.school}</span>
+            <span class="tag-separator" aria-hidden="true">/</span>
+            <span>{profile.location.split(',')[0]}</span>
+          </p>
           <h1 id="home-title" class="display-title">
-            <span>Philip</span>
-            <span>Voultsos</span>
-            <em>{homeCopy.disciplineLine}</em>
+            <span class="name-first">Philip</span>
+            <span class="name-last">Voultsos</span>
           </h1>
+          <ul class="discipline-tags" aria-label="Academic disciplines">
+            <li class="discipline-tag discipline-tag--politics">Politics</li>
+            <li class="discipline-tag discipline-tag--economics">Economics</li>
+            <li class="discipline-tag discipline-tag--history">History</li>
+          </ul>
           <p class="opening-summary">{homeCopy.introduction}</p>
           <div class="action-row">
-            <a class="action-link action-link--primary magnetic" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+            <a class="action-link action-link--primary" href="/cv.pdf" target="_blank" rel="noopener noreferrer">
               Academic CV
               <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 15 15 5M6 5h9v9" /></svg>
             </a>
-            <a class="text-link" href="/about">Academic background <span aria-hidden="true">→</span></a>
+            <a class="text-link magnetic" href="/about">Academic background <span aria-hidden="true">→</span></a>
           </div>
         </div>
 
@@ -99,7 +107,7 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
           <h2 id="contact-title">{homeCopy.contactTitle}</h2>
         </div>
         <div class="contact-actions">
-          <a class="action-link action-link--primary magnetic" href="/cv.pdf" target="_blank" rel="noopener noreferrer">{homeCopy.cvAction} <span aria-hidden="true">↗</span></a>
+          <a class="action-link action-link--primary" href="/cv.pdf" target="_blank" rel="noopener noreferrer">{homeCopy.cvAction} <span aria-hidden="true">↗</span></a>
           <a class="text-link" href={`mailto:${profile.email}`}>Email Philip <span aria-hidden="true">↗</span></a>
         </div>
       </section>
