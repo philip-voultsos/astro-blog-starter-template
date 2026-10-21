@@ -41,7 +41,30 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
           </div>
         </div>
 
-        <p class="opening-index" aria-hidden="true">Academic profile <span>2026</span></p>
+        <figure class="research-diagram" aria-labelledby="diagram-caption">
+          <div class="diagram-topline"><span>EPQ / question map</span><span>Britain · 2008—24</span></div>
+          <svg viewBox="0 0 440 300" role="img" aria-labelledby="diagram-title diagram-description">
+            <title id="diagram-title">A map of the EPQ research question</title>
+            <desc id="diagram-description">Economic shocks and political events are shown as vectors to examine alongside public support. The diagram describes questions to investigate, not measured findings.</desc>
+            <defs>
+              <marker id="arrow-ink" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M1 1 6 4 1 7" fill="none" stroke="currentColor" stroke-width="1.2" /></marker>
+            </defs>
+            <path class="diagram-grid" d="M40 44H420M40 94H420M40 144H420M40 194H420M40 244H420M80 24V264M160 24V264M240 24V264M320 24V264M400 24V264" />
+            <path class="diagram-vector diagram-vector--teal" d="M94 206 199 149" marker-end="url(#arrow-ink)" />
+            <path class="diagram-vector diagram-vector--rust" d="M104 86 199 137" marker-end="url(#arrow-ink)" />
+            <path class="diagram-vector diagram-vector--ink" d="M236 144 346 144" marker-end="url(#arrow-ink)" />
+            <circle class="diagram-node" cx="218" cy="144" r="22" />
+            <circle class="diagram-node diagram-node--end" cx="360" cy="144" r="18" />
+            <text class="diagram-label" x="54" y="70">POLITICAL EVENTS</text>
+            <text class="diagram-label" x="54" y="226">ECONOMIC SHOCKS</text>
+            <text class="diagram-label diagram-label--node" x="218" y="185" text-anchor="middle">PUBLIC SUPPORT</text>
+            <text class="diagram-label diagram-label--node" x="360" y="185" text-anchor="middle">POPULISM</text>
+            <text class="diagram-axis-label" x="220" y="276" text-anchor="middle">RELATIONSHIPS UNDER INVESTIGATION</text>
+          </svg>
+          <figcaption id="diagram-caption"><span class="diagram-key" aria-hidden="true"></span>Arrows mark relationships to examine, not findings.</figcaption>
+        </figure>
+
+        <p class="opening-index" aria-hidden="true">Athens <span>·</span> Academic profile</p>
       </section>
 
       <section class="focus-section reveal" aria-labelledby="focus-title">

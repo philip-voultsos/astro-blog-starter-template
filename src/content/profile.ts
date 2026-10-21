@@ -16,7 +16,7 @@ export const profile = {
       title: 'Politics, economics, and history',
       paragraphs: [
         'I study Mathematics, Economics, History, and Politics at Byron College. I intend to read Philosophy, Politics and Economics at university.',
-        'My interests are political economy, political theory, and modern British history. I compare political developments with their economic and historical context, then assess explanations against evidence. I am particularly interested in how institutions shape incentives and how economic disruption affects political support.'
+        'I keep returning to political economy, political theory, and modern British history. I want to understand how institutions shape incentives, and why economic disruption can shift political support. I use historical context and evidence to test explanations.'
       ]
     },
     {
@@ -24,7 +24,7 @@ export const profile = {
       label: 'Research',
       title: 'The Extended Project Qualification',
       paragraphs: [
-        'My project asks how the polycrisis between 2008 and 2024 affected the popularity of right-wing populism in Britain. It examines the relationship between economic shocks, political events, and changes in public support.'
+        'My project asks how the polycrisis between 2008 and 2024 affected the popularity of right-wing populism in Britain. I’m looking at economic shocks and political events alongside changes in public support.'
       ]
     },
     {
@@ -41,12 +41,12 @@ export const profile = {
 
 export const homeCopy = {
   disciplineLine: 'Politics, economics, history.',
-  introduction: 'I study how political ideas become institutions, how institutions shape economic outcomes, and how history helps explain political change. I intend to read Philosophy, Politics and Economics.',
-  focusTitle: 'Questions across disciplines',
-  workTitle: 'Research and service',
-  studiesTitle: 'A quantitative and historical foundation',
+  introduction: 'I’m interested in what happens when political ideas meet economic pressures, and how history helps explain the result. I plan to study Philosophy, Politics and Economics.',
+  focusTitle: 'Questions I return to',
+  workTitle: 'Research and Model UN',
+  studiesTitle: 'Current subjects and EPQ',
   studiesSummary: `I study Mathematics, Economics, History, and Politics at ${profile.school}.`,
-  contactTitle: 'Further information',
+  contactTitle: 'Get in touch or view my CV',
   cvAction: 'Open academic CV'
 } as const;
 

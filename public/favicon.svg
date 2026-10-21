@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect x="2" y="2" width="60" height="60" rx="14" fill="#142033" />
-  <text x="32" y="42" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700" letter-spacing="-2" text-anchor="middle">PV</text>
-  <path d="M20 50h24" stroke="#3159dc" stroke-linecap="round" stroke-width="3" />
+  <rect x="2" y="2" width="60" height="60" rx="12" fill="#f3f0e8" stroke="#a9a497" stroke-width="2" />
+  <path d="M14 18v34h36M14 44l13-13 10 7 14-19" fill="none" stroke="#176b70" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" />
+  <circle cx="27" cy="31" r="3" fill="#b2563c" />
+  <circle cx="37" cy="38" r="3" fill="#b2563c" />
+  <circle cx="51" cy="19" r="3" fill="#b2563c" />
 </svg>

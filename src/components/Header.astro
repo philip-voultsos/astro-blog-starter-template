@@ -15,14 +15,9 @@ const isCv = pathname === '/cv' || pathname.startsWith('/cv/');
   </a>
 
   <nav class="primary-nav" aria-label="Primary navigation">
-    <div class="nav-liquid-pill" aria-hidden="true"></div>
     <a href="/" class={isHome ? 'nav-link is-active' : 'nav-link'} aria-current={isHome ? 'page' : undefined}>Overview</a>
     <a href="/about" class={isAbout ? 'nav-link is-active' : 'nav-link'} aria-current={isAbout ? 'page' : undefined}>Background</a>
     <a href="/cv" class={isCv ? 'nav-link nav-cv is-active' : 'nav-link nav-cv'} aria-current={isCv ? 'page' : undefined}>CV</a>
   </nav>
 </header>
 
-<script>
-  import '../scripts/motion';
-  import '../scripts/liquid-nav';
-</script>
